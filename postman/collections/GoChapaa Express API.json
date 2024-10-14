@@ -10,40 +10,6 @@
 			"name": "Authentication",
 			"item": [
 				{
-					"name": "Confirm Phone",
-					"id": "60b1f418-be48-4af8-bdf9-019f5059d76d",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"phone\": \"+254791798403\",\n  \"otp\": \"700959\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{Url}}/auth/confirmPhone",
-							"host": [
-								"{{Url}}"
-							],
-							"path": [
-								"auth",
-								"confirmPhone"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Login",
 					"id": "0e9878d5-2751-483f-bb2b-28a3f91b4dae",
 					"protocolProfileBehavior": {
@@ -57,7 +23,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"email\": \"ouda.wycliffe1@gmail.com\",\n  \"password\":\"Ouda@1234\"\n}",
+							"raw": "{\n  \"email\": \"ouda.wycliffe@gmail.com\",\n  \"password\":\"Ouda@1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -699,9 +665,133 @@
 								"auth",
 								"me"
 							]
-						}
+						},
+						"description": "This endpoint retrieves the details of the user's profile data including their ID, name, email, phone number, verification status, two-factor authentication details, nationality information, subscription status, and timestamps for creation, update, and deletion.\n\nThe response will be in JSON format with the following fields:\n\n- `id` (string): The user's ID.\n    \n- `firstName` (string): The user's first name.\n    \n- `middleName` (string, nullable): The user's middle name.\n    \n- `lastName` (string): The user's last name.\n    \n- `email` (string): The user's email address.\n    \n- `phone` (string): The user's phone number.\n    \n- `dateOfBirth` (string, nullable): The user's date of birth.\n    \n- `isPhoneVerified` (boolean): Indicates if the user's phone number is verified.\n    \n- `isEmailVerified` (boolean): Indicates if the user's email is verified.\n    \n- `verificationStatus` (string): The user's verification status.\n    \n- `twoFactorEnabled` (boolean): Indicates if two-factor authentication is enabled for the user.\n    \n- `twoFactorCommunication` (string, nullable): The communication method for two-factor authentication.\n    \n- `accessFailedCount` (integer): The count of access failures.\n    \n- `lockOutEnabled` (boolean): Indicates if lockout is enabled.\n    \n- `lockOutEnd` (string, nullable): The end time for lockout.\n    \n- `nationalityCode` (string, nullable): The nationality code for the user.\n    \n- `nationalityName` (string, nullable): The nationality name for the user.\n    \n- `nationalityDialCode` (string, nullable): The nationality dial code for the user.\n    \n- `subscribedToNewsletters` (boolean): Indicates if the user is subscribed to newsletters.\n    \n- `isModified` (boolean): Indicates if the user profile is modified.\n    \n- `isDeleted` (boolean): Indicates if the user profile is deleted.\n    \n- `createdAt` (string): Timestamp for the creation of the user profile.\n    \n- `updatedAt` (string): Timestamp for the last update of the user profile.\n    \n- `deletedAt` (string, nullable): Timestamp for the deletion of the user profile.\n    \n- `profilePictures` (array): Array of profile pictures associated with the user.\n    \n\nThis endpoint is used to retrieve the authenticated user's information.\n\n### Request Body\n\nThis request does not require a request body.\n\n### Response Body\n\nThe response is a JSON object representing the user's profile information. Below is the JSON schema for the response:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"id\": { \"type\": \"string\" },\n    \"firstName\": { \"type\": \"string\" },\n    \"middleName\": { \"type\": [\"string\", \"null\"] },\n    \"lastName\": { \"type\": \"string\" },\n    \"email\": { \"type\": \"string\" },\n    \"phone\": { \"type\": \"string\" },\n    \"dateOfBirth\": { \"type\": [\"string\", \"null\"] },\n    \"isPhoneVerified\": { \"type\": \"boolean\" },\n    \"isEmailVerified\": { \"type\": \"boolean\" },\n    \"verificationStatus\": { \"type\": \"string\" },\n    \"twoFactorEnabled\": { \"type\": \"boolean\" },\n    \"twoFactorCommunication\": { \"type\": [\"string\", \"null\"] },\n    \"accessFailedCount\": { \"type\": \"integer\" },\n    \"lockOutEnabled\": { \"type\": \"boolean\" },\n    \"lockOutEnd\": { \"type\": [\"string\", \"null\"] },\n    \"nationalityCode\": { \"type\": [\"string\", \"null\"] },\n    \"nationalityName\": { \"type\": [\"string\", \"null\"] },\n    \"nationalityDialCode\": { \"type\": [\"string\", \"null\"] },\n    \"subscribedToNewsletters\": { \"type\": \"boolean\" },\n    \"isModified\": { \"type\": \"boolean\" },\n    \"isDeleted\": { \"type\": \"boolean\" },\n    \"createdAt\": { \"type\": \"string\" },\n    \"updatedAt\": { \"type\": \"string\" },\n    \"deletedAt\": { \"type\": [\"string\", \"null\"] },\n    \"profilePictures\": { \"type\": \"array\" }\n  }\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "7b39981d-b021-472f-887d-3917854f06a3",
+							"name": "Invalid/No Authorization",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/auth/me",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:30:21 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-0Qygw6iVxcxnB0lcmHwt68LKK94\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 401,\n    \"message\": \"There is no user\"\n}"
+						},
+						{
+							"id": "eaef92bb-7bef-4326-a24c-42f8f02172b8",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/auth/me",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:32:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "635"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27b-WhOhew96B6vpI4D6u0R7tgNqfc8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n    \"firstName\": \"Ouda\",\n    \"middleName\": null,\n    \"lastName\": \"Wycliffe\",\n    \"email\": \"ouda.wycliffe@gmail.com\",\n    \"phone\": \"+254746764503\",\n    \"dateOfBirth\": null,\n    \"isPhoneVerified\": true,\n    \"isEmailVerified\": true,\n    \"verificationStatus\": \"verified\",\n    \"twoFactorEnabled\": false,\n    \"twoFactorCommunication\": null,\n    \"accessFailedCount\": 0,\n    \"lockOutEnabled\": false,\n    \"lockOutEnd\": null,\n    \"nationalityCode\": null,\n    \"nationalityName\": null,\n    \"nationalityDialCode\": null,\n    \"subscribedToNewsletters\": false,\n    \"isModified\": false,\n    \"isDeleted\": false,\n    \"createdAt\": \"2024-05-17T08:00:20.035Z\",\n    \"updatedAt\": \"2024-10-14T09:42:22.321Z\",\n    \"deletedAt\": null,\n    \"profilePictures\": []\n}"
+						}
+					]
 				},
 				{
 					"name": "Update user info",
@@ -724,7 +814,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firstName\": \"irene\",\n  \"lastName\": \"irene\",\n  \"middleName\": \"O\",\n  \"phone\": \"+254747917984\",\n  \"dateOfBirth\": \"12/1/2004\",\n  \"nationalityName\":\"Kenyan\",\n  \"subscribedToNewsletters\": true,\n  \"email\": \"irenemessage2@gmail.com\"\n}",
+							"raw": "{\n    \"firstName\": \"Ouda\",\n    \"middleName\": \"Leight\",\n    \"lastName\": \"Wycliffe\",\n    \"email\": \"ouda.wycliffe@gmail.com\",\n    \"phone\": \"+254746764503\",\n    \"dateOfBirth\": null,\n    \"isPhoneVerified\": true,\n    \"nationalityName\":\"Kenyan\",\n    \"subscribedToNewsletters\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -740,9 +830,151 @@
 								"auth",
 								"me"
 							]
-						}
+						},
+						"description": "### Update User Profile\n\nThis endpoint allows the user to update their profile information.\n\n**Request Body**\n\n- `firstName` (string): The first name of the user.\n    \n- `middleName` (string): The middle name of the user.\n    \n- `lastName` (string): The last name of the user.\n    \n- `email` (string): The email address of the user.\n    \n- `phone` (string): The phone number of the user.\n    \n- `dateOfBirth` (string): The date of birth of the user.\n    \n- `isPhoneVerified` (boolean): Indicates if the phone number is verified.\n    \n- `nationalityName` (string): The nationality of the user.\n    \n- `subscribedToNewsletters` (boolean): Indicates if the user is subscribed to newsletters.\n    \n\n**Response**  \nThe API call returns a JSON object with a `success` key indicating the success status of the request.\n\nExample:\n\n``` json\n{\n    \"success\": true\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "a1205b75-4f83-46aa-82ec-a5e65e38b947",
+							"name": "Missing Requirements",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Ouda\",\n    \"middleName\": \"Leight\",\n    \"lastName\": \"Wycliffe\",\n    \"email\": \"\",\n    \"phone\": \"\",\n    \"dateOfBirth\": null,\n    \"isPhoneVerified\": true,\n    \"nationalityName\":\"Kenyan\",\n    \"subscribedToNewsletters\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/me",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:38:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f-pszMWpLx5i5ZaTfGo4mOCcCGJUc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"value\": \"\",\n            \"msg\": \"Invalid value\",\n            \"param\": \"email\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						},
+						{
+							"id": "98e03c82-d487-4cdc-aa6c-0e19032eae5a",
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Ouda\",\n    \"middleName\": \"Leight\",\n    \"lastName\": \"Wycliffe\",\n    \"email\": \"ouda.wycliffe@gmail.com\",\n    \"phone\": \"+254746764503\",\n    \"dateOfBirth\": null,\n    \"isPhoneVerified\": true,\n    \"nationalityName\":\"Kenyan\",\n    \"subscribedToNewsletters\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/me",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:39:16 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete user",
@@ -763,16 +995,16 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:5000/auth/me",
+							"raw": "{{Url}}/auth/me",
 							"host": [
-								"localhost"
+								"{{Url}}"
 							],
-							"port": "5000",
 							"path": [
 								"auth",
 								"me"
 							]
-						}
+						},
+						"description": "### Delete User Authentication\n\nThis endpoint is used to delete the user's own authentication details.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- `status` (number): The status code of the response.\n    \n- `message` (string): A message indicating the result of the operation."
 					},
 					"response": []
 				},
@@ -814,7 +1046,8 @@
 								"me",
 								"password"
 							]
-						}
+						},
+						"description": "### Update Password\n\nThis endpoint is used to update the password for the authenticated user.\n\n#### Request Body\n\n- `current` (string): The current password of the user.\n    \n- `password` (string): The new password for the user.\n    \n\n#### Response\n\nThe response will include the updated user information if the password update is successful."
 					},
 					"response": []
 				},
@@ -846,9 +1079,76 @@
 								"auth",
 								"allUsers"
 							]
-						}
+						},
+						"description": "### Get All Users\n\nThis endpoint retrieves a list of all users.\n\n#### Request\n\n- Method: GET\n    \n- URL: `{{Url}}/auth/allUsers`\n    \n\n#### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n\n``` json\n{\n    \"success\": true,\n    \"page_meta\": {\n        \"current_items_count\": 0,\n        \"total_items_count\": 0,\n        \"offset\": 0,\n        \"requested_page_size\": 0,\n        \"current_page_number\": 0,\n        \"prev_page_number\": 0,\n        \"number_of_pages\": 0,\n        \"has_next_page\": true,\n        \"next_page_number\": 0,\n        \"next_page_url\": \"\",\n        \"prev_page_url\": \"\"\n    },\n    \"user\": [\n        {\n            \"id\": \"\",\n            \"firstName\": \"\",\n            \"lastName\": \"\",\n            \"middleName\": null,\n            \"email\": \"\",\n            \"phone\": \"\",\n            \"roles\": [\"\"],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": true,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"\"\n        }\n    ]\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "f33c117e-df80-45a9-afc6-c6b5f49e09ab",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/auth/allUsers",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"allUsers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:39:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54a5-r231hPJ1GAvMNUawhRjaTChtn3Y\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"page_meta\": {\n        \"current_items_count\": 75,\n        \"total_items_count\": 1,\n        \"offset\": 7500000,\n        \"requested_page_size\": 100000,\n        \"current_page_number\": 76,\n        \"prev_page_number\": 75,\n        \"number_of_pages\": 1,\n        \"has_next_page\": false,\n        \"next_page_number\": 1,\n        \"next_page_url\": \"/auth?page=1&page_size=100000\",\n        \"prev_page_url\": \"/auth?page=75&page_size=100000\"\n    },\n    \"user\": [\n        {\n            \"id\": \"ef140de3-98ec-4d57-94ae-1bf4b7e568ae\",\n            \"firstName\": \"Ouda\",\n            \"lastName\": \"Wycliffe\",\n            \"middleName\": null,\n            \"email\": \"wycliffe@gochapaa.com\",\n            \"phone\": \"+254746764504\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"e7cb205e-8550-4159-8c1f-4fb9e541e911\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Account\",\n            \"middleName\": null,\n            \"email\": \"testgochapaaapp@bakeapp.co.ke\",\n            \"phone\": \"+251544216352\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"24f65e45-c546-4ac7-8829-10966bc0bf56\",\n            \"firstName\": \"Irene\",\n            \"lastName\": \"Njuguna\",\n            \"middleName\": null,\n            \"email\": \"irenemege2@gmail.co.ke\",\n            \"phone\": \"+254747917985\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"7ec5c0b3-d828-4cb8-8bab-6e188b9802a8\",\n            \"firstName\": \"Irene\",\n            \"lastName\": \"Njuguna\",\n            \"middleName\": null,\n            \"email\": \"ireneka@gochapaa.com\",\n            \"phone\": \"+254791798404\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"e5ed6b60-4f08-440b-b6d6-0d30a98e0375\",\n            \"firstName\": \"Kah\",\n            \"lastName\": \"Test7\",\n            \"middleName\": null,\n            \"email\": \"test7@bakeapp.co.ke\",\n            \"phone\": \"+254751178734\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"7da17f9d-ea44-4fff-973e-6638ed7d9cee\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"App\",\n            \"middleName\": null,\n            \"email\": \"testapp@bakeapp.co.ke\",\n            \"phone\": \"+254547896321\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"9fe4f9bd-85f1-43b3-aa02-74ace804f668\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"App\",\n            \"middleName\": null,\n            \"email\": \"testingapp@bakeapp.co.ke\",\n            \"phone\": \"+254563214967\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"751aacf2-bfa6-4112-866b-135e38121dc5\",\n            \"firstName\": \"Jane\",\n            \"lastName\": \"Njuguna\",\n            \"middleName\": null,\n            \"email\": \"janenjuguna550@gmail.com\",\n            \"phone\": \"+254114180510\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"927a4312-8239-4c80-8533-69635be8e837\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Funny\",\n            \"middleName\": null,\n            \"email\": \"test@comiy.com\",\n            \"phone\": \"+254632589741\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"82d164f5-b7d1-42b9-9ab8-211088994a5b\",\n            \"firstName\": \"Alpher\",\n            \"lastName\": \"Aromba\",\n            \"middleName\": null,\n            \"email\": \"alpherscally@gmail.com\",\n            \"phone\": \"++254748946934\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"ad00f6d8-23e0-49db-b99f-5c16ff4a41ec\",\n            \"firstName\": \"Mwangi\",\n            \"lastName\": \"Kimari\",\n            \"middleName\": null,\n            \"email\": \"jameskimari230@gmail.com\",\n            \"phone\": \"++254794980046\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"38569fc8-39e0-46a8-9fd5-77e5ecb24119\",\n            \"firstName\": \"irene\",\n            \"lastName\": \"Njuguna\",\n            \"middleName\": \"O\",\n            \"email\": \"irenemessage2@gmail.com\",\n            \"phone\": \"254747917984\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"2004-12-01T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"227c78df-d142-43b2-86ea-894f7440a68e\",\n            \"firstName\": \"Lisa\",\n            \"lastName\": \"Sukuma\",\n            \"middleName\": null,\n            \"email\": \"lisa@bakeapp.co.ke\",\n            \"phone\": \"+254790482133\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"1978-08-28T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"bce549b2-edaf-45e0-b89b-b32153f8d1aa\",\n            \"firstName\": \"Hames\",\n            \"lastName\": \"Juma\",\n            \"middleName\": null,\n            \"email\": \"hamesj4@gmail.com\",\n            \"phone\": \"++254706678178\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"1bdaccc1-ffe4-480c-959b-06a2f5344a23\",\n            \"firstName\": \"Kah\",\n            \"lastName\": \"Karani\",\n            \"middleName\": null,\n            \"email\": \"test5@bakeapp.co.ke\",\n            \"phone\": \"254720546312\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"1970-09-06T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"e4182af1-b1d5-4b01-b3e5-fd211d4dfb4e\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Test\",\n            \"middleName\": null,\n            \"email\": \"gochapaatest@bakeapp.co.ke\",\n            \"phone\": \"+254809653214\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"2f2b7744-db71-4d39-af7e-11f29853d418\",\n            \"firstName\": \"GoChapaa \",\n            \"lastName\": \"BakeApp\",\n            \"middleName\": null,\n            \"email\": \"gochapaa@bakeapp.co.ke\",\n            \"phone\": \"+254854632179\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"34c0569f-66e2-49e2-a5bb-1aea5814b393\",\n            \"firstName\": \"Kah\",\n            \"lastName\": \"Karani\",\n            \"middleName\": null,\n            \"email\": \"edward.sukuma@gmail.com\",\n            \"phone\": \"+25471234567\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"348c8d73-c89d-4a17-a85d-0541d1791609\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Chapaa\",\n            \"middleName\": null,\n            \"email\": \"testing2@gochapaa.com\",\n            \"phone\": \"+254874569123\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"324c06ba-3068-45cf-b912-92cd7a543dd4\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Chapaa\",\n            \"middleName\": null,\n            \"email\": \"testing1gc@gochapaa.com\",\n            \"phone\": \"+254854632896\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"699ba0fa-4521-4952-91dc-703536014fd8\",\n            \"firstName\": \"Edward\",\n            \"lastName\": \"Karani\",\n            \"middleName\": null,\n            \"email\": \"edwardkarani2@outlook.com\",\n            \"phone\": \"+254751178735\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"1994-09-16T00:00:00.000Z\",\n            \"isPhoneVerified\": true,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"712f4af6-1005-467a-b4f0-90d8448e9d31\",\n            \"firstName\": \"ndesanjo\",\n            \"lastName\": \"m\",\n            \"middleName\": null,\n            \"email\": \"ndesanjo@gmail.com\",\n            \"phone\": \"+260950135603\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"7d77232b-445b-484a-a99d-c9904a10cb55\",\n            \"firstName\": \"Dolores\",\n            \"lastName\": \"Doloribu\",\n            \"middleName\": null,\n            \"email\": \"lemiboh573@tiervio.com\",\n            \"phone\": \"+254117242626\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"d4c1086c-26e5-49d2-8238-cd96a8e86705\",\n            \"firstName\": \"Irene\",\n            \"lastName\": \"Karrey\",\n            \"middleName\": null,\n            \"email\": \"irenenjuguna98@gmail.com\",\n            \"phone\": \"+254747917984\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"6a4faba5-9442-46d2-85ff-6e07dfdd0b15\",\n            \"firstName\": \"Paul\",\n            \"lastName\": \"N\",\n            \"middleName\": null,\n            \"email\": \"paulxnjoroge@gmail.com\",\n            \"phone\": \"+254079888915\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"6f31d475-da4d-4dee-85ad-0e5aa7aac428\",\n            \"firstName\": \"Reuben \",\n            \"lastName\": \"Test\",\n            \"middleName\": null,\n            \"email\": \"reuben79@gochapaa.com\",\n            \"phone\": \"+254285693147\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"3573a1f8-7a70-4a2c-ba67-bc3eda96d860\",\n            \"firstName\": \"Reuben \",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"reuben47@gochapaa.com\",\n            \"phone\": \"+254548721369\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"a5fe6f39-f354-4a56-866e-df4a4c0ca712\",\n            \"firstName\": \"Testing \",\n            \"lastName\": \"GoChapaa \",\n            \"middleName\": null,\n            \"email\": \"testing24@gochapaa.com\",\n            \"phone\": \"+254568965321\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"0772948e-5759-4c51-bce5-91ddf9f91ee8\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"GoChapaa\",\n            \"middleName\": null,\n            \"email\": \"test@gochapaa6.com\",\n            \"phone\": \"+254745678912\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"48a4ca2b-6891-4653-8a12-3851863bf016\",\n            \"firstName\": \"Lisa\",\n            \"lastName\": \"Wanjiru \",\n            \"middleName\": null,\n            \"email\": \"wanjirulissa1@gmail.com\",\n            \"phone\": \"+254700062943\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"28464105-9d55-404b-a4e3-7a59c51aff6d\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"GoChapaa\",\n            \"middleName\": null,\n            \"email\": \"test@gochapaa2.com\",\n            \"phone\": \"+254234567891\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"51c60b0b-9102-46e3-9b3b-a0d0832b58f2\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"r.nguyo27@gmail.com\",\n            \"phone\": \"+254704724484\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"d27211f8-3ba2-459d-a339-b0e9568dda6e\",\n            \"firstName\": \"Philip\",\n            \"lastName\": \"Chege\",\n            \"middleName\": null,\n            \"email\": \"pchege99@gmail.com\",\n            \"phone\": \"+254723726211\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"e37ccd02-c2fb-482a-ac68-a49a264d8464\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Gochapaa\",\n            \"middleName\": null,\n            \"email\": \"test19@gmail.com\",\n            \"phone\": \"+254768938093\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"4bf65426-d842-437a-b808-387f30606b0e\",\n            \"firstName\": \"Faith\",\n            \"lastName\": \"Wanjiru\",\n            \"middleName\": \"\",\n            \"email\": \"nyamburaf12@gmail.com\",\n            \"phone\": \"+254713774839\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"1994-02-12T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"31498924-474b-4a1f-b986-12d325ca055b\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test18@gochapaa.com\",\n            \"phone\": \"+254867657687\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"f9c61570-cbb7-4699-bbc4-7fba89777125\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"GoChapaa\",\n            \"middleName\": null,\n            \"email\": \"test17@gmail.com\",\n            \"phone\": \"+254789787687\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"64e8fa45-06d2-4a45-9050-e643ff672852\",\n            \"firstName\": \"Edward\",\n            \"lastName\": \"Karani\",\n            \"middleName\": \"\",\n            \"email\": \"edward@gochapaa.com\",\n            \"phone\": \"+254789765438\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"2005-02-01T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"05c41294-e0cd-4062-a3cd-df0b4a3205aa\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"reuben@gochapaa.com\",\n            \"phone\": \"+254720637771\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"2010-09-04T00:00:00.000Z\",\n            \"isPhoneVerified\": true,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"pending\"\n        },\n        {\n            \"id\": \"653dccb5-2608-4d12-bc4e-cce4523c59bc\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"nguyo.affiliate@gmail.com\",\n            \"phone\": \"+254867497698\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"aff790ac-f635-4100-8186-dabb7ae63e2b\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test17@gochapaa.com\",\n            \"phone\": \"+254677980290\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"6d407448-3b83-45cc-9b0f-8ac974be6bb9\",\n            \"firstName\": \"Fname\",\n            \"lastName\": \"Lastname\",\n            \"middleName\": null,\n            \"email\": \"mgathairu@gmail.com\",\n            \"phone\": \"+254712309876\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"8869f680-3a14-48df-9cb2-007202166414\",\n            \"firstName\": \"Lisa\",\n            \"lastName\": \"wanjiru\",\n            \"middleName\": null,\n            \"email\": \"lisa.sukuma@gmail.com\",\n            \"phone\": \"+254070006294\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"55dbd3c2-72fa-4b9b-baee-bf3f215cb432\",\n            \"firstName\": \"admin\",\n            \"lastName\": \"admin\",\n            \"middleName\": null,\n            \"email\": \"admin@gochapaa.com\",\n            \"phone\": \"08000000000\",\n            \"roles\": [\n                \"ROLE_ADMIN\",\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"85175ea3-b14e-4e12-862a-c4777706895c\",\n            \"firstName\": \"FName\",\n            \"lastName\": \"Lname\",\n            \"middleName\": null,\n            \"email\": \"edward@karani.co.ke\",\n            \"phone\": \"+254720123000\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"0cd4a51b-6dca-4d3f-b232-1b641e8def24\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"GoChapaa\",\n            \"middleName\": null,\n            \"email\": \"test16@gochapaa.com\",\n            \"phone\": \"+254863898003\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"0e582f8e-47e0-49d9-b6a4-f8f0c5ee2dd4\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"GoChapaa\",\n            \"middleName\": null,\n            \"email\": \"test15@gochapaa.com\",\n            \"phone\": \"+254554689829\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"606df1e7-3cc8-491e-a0eb-da353d8755dd\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"GoChapaa\",\n            \"middleName\": null,\n            \"email\": \"test14@gochapaa.com\",\n            \"phone\": \"+254989877687\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"6d7638a7-5aa8-4b12-837c-6ef12fa73372\",\n            \"firstName\": \"Test\",\n            \"lastName\": \"Gochapaa\",\n            \"middleName\": null,\n            \"email\": \"test13@gochapaa.com\",\n            \"phone\": \"+254989898687\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"42b8e4d0-7a99-4268-a170-d12aa1af30c0\",\n            \"firstName\": \"Joe\",\n            \"lastName\": \"Doe\",\n            \"middleName\": null,\n            \"email\": \"edwardkarani1@outlook.com\",\n            \"phone\": \"+254720000002\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n            \"firstName\": \"Ouda\",\n            \"lastName\": \"Wycliffe\",\n            \"middleName\": \"Leight\",\n            \"email\": \"ouda.wycliffe@gmail.com\",\n            \"phone\": \"+254746764503\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": true,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"119b18a5-5ad2-4cb0-9234-d17a99519e9f\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test12@gochapaa.com\",\n            \"phone\": \"+254687898009\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"59416d3b-f46b-46bd-a443-3ebdf0a5d69c\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"tes11@gochapaa.com\",\n            \"phone\": \"+254874980429\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"3e100770-9a01-4b8b-9276-0238fb3ba48a\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test10@gochapaa.com\",\n            \"phone\": \"+254876847390\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"d30c1fee-f256-4089-bd75-e66e9d2639c0\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test9@gochapaa.com\",\n            \"phone\": \"+93675899433\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"20d253ca-9777-4c75-aa51-b296ea7bb89b\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test8@gochapaa.com\",\n            \"phone\": \"+254807654322\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"89b35eae-80e5-4c7e-9fe2-9c88b8cd7019\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test7@gochapaa.com\",\n            \"phone\": \"+93743567892\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"17e77c34-8bfc-49ec-a511-488abb0be59e\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test6@gochapaa.com\",\n            \"phone\": \"+254723456789\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"812a65c4-e373-4a6c-bc34-b8b333c4816c\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test5@gmail.com\",\n            \"phone\": \"+254745678933\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"a36e584c-c48d-40a6-9e24-69802f0426b7\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test4@gochapaa.com\",\n            \"phone\": \"326598777\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"13d767f7-0d67-4c21-a1af-e8e882110428\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test2@gochapaa.com\",\n            \"phone\": \"+2547345678911\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"cfc77e57-bd94-4505-83fe-e51e15be540d\",\n            \"firstName\": \"Reuben\",\n            \"lastName\": \"Nguyo\",\n            \"middleName\": null,\n            \"email\": \"test@gochapaa.com\",\n            \"phone\": \"23456789\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"0734a8ff-df9c-4996-8802-520d8c7eb607\",\n            \"firstName\": \"Fname\",\n            \"lastName\": \"Lastname\",\n            \"middleName\": null,\n            \"email\": \"emails@google.com\",\n            \"phone\": \"+254712923022\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"462a2a91-4b8a-4385-8180-5a96553bbf22\",\n            \"firstName\": \"Fname\",\n            \"lastName\": \"Lname\",\n            \"middleName\": null,\n            \"email\": \"emaiaddress@gmail.com\",\n            \"phone\": \"+254720123456\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"4d56f7f0-b764-4f1d-8279-00272f9efdb5\",\n            \"firstName\": \"Fname\",\n            \"lastName\": \"Lname\",\n            \"middleName\": null,\n            \"email\": \"email@gmail.com\",\n            \"phone\": \"+254720234567\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"da71d774-8784-45e7-a5f0-fa4aff93aa7f\",\n            \"firstName\": \"Ouda1\",\n            \"lastName\": \"Wycliffe\",\n            \"middleName\": null,\n            \"email\": \"oudawy105@gmail.com\",\n            \"phone\": \"+254746764505\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"6cca5144-efe5-4f59-a563-c236bf94d00a\",\n            \"firstName\": \"First\",\n            \"lastName\": \"Last\",\n            \"middleName\": null,\n            \"email\": \"email@domain.com\",\n            \"phone\": \"+254712098798\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"unverified\"\n        },\n        {\n            \"id\": \"428b0703-03a4-4b78-bcec-a3677d79d2b0\",\n            \"firstName\": \"Faith\",\n            \"lastName\": \"Wanjiru\",\n            \"middleName\": null,\n            \"email\": \"nyamburawannyjiru3@gmail.com\",\n            \"phone\": \"+254713774838\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": false,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"fd9aff4b-5304-42b1-86e1-151876b31e1a\",\n            \"firstName\": \"Maryanne \",\n            \"lastName\": \"Njuguna \",\n            \"middleName\": \"\",\n            \"email\": \"njugunamaryanne7@gmail.com\",\n            \"phone\": \"+254711764777\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"2001-05-20T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"pending\"\n        },\n        {\n            \"id\": \"2c2e095c-8865-49bf-b898-0cd726c42578\",\n            \"firstName\": \"Brenda\",\n            \"lastName\": \"mwenda\",\n            \"middleName\": null,\n            \"email\": \"kawirabrendah005@gmail.com\",\n            \"phone\": \"+254707092340\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"ba21fdd2-d28d-43b4-a55f-cb1ba2d28621\",\n            \"firstName\": \"James\",\n            \"lastName\": \"Gathairu \",\n            \"middleName\": null,\n            \"email\": \"jumagathairu21@gmail.com\",\n            \"phone\": \"+254706678178\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"d5f0241c-f7dc-4f9e-b54b-50b286bfc24a\",\n            \"firstName\": \"Shakira\",\n            \"lastName\": \"Omata\",\n            \"middleName\": \"\",\n            \"email\": \"omatashakira254@gmail.com\",\n            \"phone\": \"+25479829392\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"1999-08-15T00:00:00.000Z\",\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"bf0d1221-f07f-447b-914f-04a895743d5d\",\n            \"firstName\": \"Irene\",\n            \"lastName\": \"Njuguna\",\n            \"middleName\": \"O\",\n            \"email\": \"irene@gochapaa.com\",\n            \"phone\": \"+254791798403\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"2007-08-05T00:00:00.000Z\",\n            \"isPhoneVerified\": true,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"pending\"\n        },\n        {\n            \"id\": \"f01752f0-7723-4b52-a7a1-baa83b7ab88e\",\n            \"firstName\": \"Edward\",\n            \"lastName\": \"Karani\",\n            \"middleName\": \"\",\n            \"email\": \"edwardkarani@gmail.com\",\n            \"phone\": \"+254720006056\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": \"2024-05-20T00:00:00.000Z\",\n            \"isPhoneVerified\": true,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        },\n        {\n            \"id\": \"a2f27740-11aa-4bd3-ab65-59c73ab0ed1b\",\n            \"firstName\": \"Sug\",\n            \"lastName\": \"Test\",\n            \"middleName\": null,\n            \"email\": \"sug@gochapaa.com\",\n            \"phone\": \"111111111\",\n            \"roles\": [\n                \"ROLE_USER\"\n            ],\n            \"dateOfBirth\": null,\n            \"isPhoneVerified\": false,\n            \"isEmailVerified\": true,\n            \"verificationStatus\": \"verified\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Upload profile pic",
@@ -857,16 +1157,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -874,7 +1164,7 @@
 							"formdata": [
 								{
 									"key": "userId",
-									"value": "",
+									"value": "63dc24fa-f556-4564-b449-b392db187f92",
 									"type": "text"
 								},
 								{
@@ -885,18 +1175,99 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/auth/me/profilePicture",
+							"raw": "{{Url}}/auth/me/profilePicture",
 							"host": [
-								"{{url}}"
+								"{{Url}}"
 							],
 							"path": [
 								"auth",
 								"me",
 								"profilePicture"
 							]
-						}
+						},
+						"description": "This endpoint allows the user to update their profile picture by making an HTTP POST request to {{Url}}/auth/me/profilePicture. The request should include a form-data body type.\n\n### Request Body\n\n- No specific parameters were provided in the last call.\n    \n\n### Response\n\n- **Status**: 200\n    \n- **Content-Type**: application/json\n    \n- The response will include a JSON object with a \"success\" key indicating the success of the operation."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "0aebdc06-3696-419d-8852-6ec0819b4515",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userId",
+											"value": "63dc24fa-f556-4564-b449-b392db187f92",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": [
+												"postman-cloud:///1eee2842-cd80-48a0-a43d-85db57ad46eb"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Url}}/auth/me/profilePicture",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me",
+										"profilePicture"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:44:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Send Phone Verification Code",
@@ -909,7 +1280,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone\": \"+254746764503\"\n}",
+							"raw": "{\n    \"phone\": \"+254746764509\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -917,17 +1288,89 @@
 							}
 						},
 						"url": {
-							"raw": "{{test-url}}/auth/sendPhoneVerificationCode",
+							"raw": "{{Url}}/auth/sendPhoneVerificationCode",
 							"host": [
-								"{{test-url}}"
+								"{{Url}}"
 							],
 							"path": [
 								"auth",
 								"sendPhoneVerificationCode"
 							]
-						}
+						},
+						"description": "### POST /auth/sendPhoneVerificationCode\n\nThis endpoint is used to send a verification code to the provided phone number.\n\n#### Request\n\n- Method: POST\n    \n- URL: `{{Url}}/auth/sendPhoneVerificationCode`\n    \n- Body:\n    \n    - phone (text, required): The phone number to which the verification code will be sent.\n        \n\n#### Response\n\nThe response is in JSON format and follows the schema below:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```\n\n- Status: 200 OK\n    \n- Content-Type: application/json\n    \n\nThe response contains a boolean value indicating the success of the operation."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "839be061-343e-4c38-8eed-ea2e2a93f7f6",
+							"name": "Successs",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"+254746764503\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/sendPhoneVerificationCode",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"sendPhoneVerificationCode"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:45:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Confirm Phone",
@@ -943,7 +1386,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phone\": \"+254746764503\",\n    \"otp\": \"406298\"\n}",
+							"raw": "{\n    \"phone\": \"+25474676450\",\n    \"otp\": \"243647\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -951,15 +1394,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{test-url}}/auth/confirmPhone",
+							"raw": "{{Url}}/auth/confirmPhone",
 							"host": [
-								"{{test-url}}"
+								"{{Url}}"
 							],
 							"path": [
 								"auth",
 								"confirmPhone"
 							]
-						}
+						},
+						"description": "### Auth Confirm Phone\n\nThis endpoint is used to confirm the phone number by providing the OTP (One-Time Password).\n\n#### Request Body\n\n- `phone` (string): The phone number to be confirmed.\n    \n- `otp` (string): The One-Time Password received for confirmation.\n    \n\n#### Response\n\nUpon a successful request, the server responds with a status code of 200 and a content type of text/xml. The response body may contain relevant data in XML format."
 					},
 					"response": []
 				},
@@ -982,17 +1426,89 @@
 							}
 						},
 						"url": {
-							"raw": "{{url-dev}}/auth/confirmEmail",
+							"raw": "{{Url}}/auth/confirmEmail",
 							"host": [
-								"{{url-dev}}"
+								"{{Url}}"
 							],
 							"path": [
 								"auth",
 								"confirmEmail"
 							]
-						}
+						},
+						"description": "# Confirm Email Authentication\n\nThis endpoint is used to confirm the email authentication by providing the email and OTP (One-Time Password).\n\n## Request Body\n\n- `email` (string): The email address for authentication.\n    \n- `otp` (string): The One-Time Password for authentication.\n    \n\n## Response\n\nUpon successful execution, the response will have a status code of 200 and a JSON body with the following fields:\n\n- `success` (boolean): Indicates whether the authentication was successful.\n    \n- `errors` (array): An array of any errors encountered during the authentication process.\n    \n- `full_messages` (array): An array of full messages related to the authentication process."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "d45836b1-8234-435d-ae4f-a04c3d1b67a8",
+							"name": "Invalid OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"oudawy105@gmail.com\",\n    \"otp\": \"639055\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/confirmEmail",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"confirmEmail"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:52:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4f-4OvpMWgpzzIzxeEkJJ/yxhIljLY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Invalid Email or OTP provided\"\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Upload profile picture",
@@ -1033,9 +1549,85 @@
 								"me",
 								"profilePicture"
 							]
-						}
+						},
+						"description": "This endpoint allows the user to update their profile picture. The request should be sent as an HTTP POST to {{Url}}/auth/me/profilePicture with form-data request body type.\n\n### Response\n\nThe response of this request can be documented as a JSON schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "ce2ec531-bea6-498a-a31a-ffe8c1a10435",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "images",
+											"type": "file",
+											"src": [
+												"postman-cloud:///1eee2842-cd80-48a0-a43d-85db57ad46eb"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Url}}/auth/me/profilePicture",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me",
+										"profilePicture"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:50:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Get user profile picture",
@@ -1066,9 +1658,73 @@
 								"me",
 								"profilePicture"
 							]
-						}
+						},
+						"description": "This endpoint makes an HTTP GET request to retrieve the profile picture of the authenticated user.\n\n### Request\n\nThere are no request parameters for this endpoint.\n\n### Response\n\n- `id` (string): The ID of the profile picture.\n    \n- `userId` (string): The ID of the user to whom the profile picture belongs.\n    \n- `fileName` (string): The name of the file.\n    \n- `filePath` (string): The path to the profile picture file.\n    \n- `originalName` (string): The original name of the file.\n    \n- `fileSize` (number): The size of the file in bytes.\n    \n- `createdAt` (string): The timestamp when the profile picture was created.\n    \n- `updatedAt` (string): The timestamp when the profile picture was last updated.\n    \n- `deletedAt` (string): The timestamp when the profile picture was deleted, if applicable.\n    \n\nThe response is in JSON format with a status code of 200 (OK)."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "d77863f3-eeaa-46c7-a50f-c13a26209db7",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/auth/me/profilePicture",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me",
+										"profilePicture"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:53:28 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "340"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"154-dcy7YulHfcZ5fVfLHHneitkahOw\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7a4eeb61-eeb7-4d95-83ae-181276a9620e\",\n    \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n    \"fileName\": null,\n    \"filePath\": \"/public/images/profile/images-1728903045810.png\",\n    \"originalName\": \"Screenshot from 2024-03-07 10-39-53.png\",\n    \"fileSize\": 323026,\n    \"createdAt\": \"2024-10-14T10:44:14.694Z\",\n    \"updatedAt\": \"2024-10-14T10:50:45.832Z\",\n    \"deletedAt\": null\n}"
+						}
+					]
 				},
 				{
 					"name": "http://localhost:5000/public/images/profile/images-1710480387025.png",
@@ -1140,9 +1796,90 @@
 								"me",
 								"kyc"
 							]
-						}
+						},
+						"description": "## /auth/me/kyc\n\nThis endpoint is used to submit KYC (Know Your Customer) information.\n\n### Request\n\n- Method: POST\n    \n- Body (form-data):\n    \n    - No parameters provided in the request body\n        \n\n### Response\n\n- Status: 200\n    \n- Content-Type: application/json\n    \n- { \"success\": true}\n    \n\n### JSON Schema for Response\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    }\n  }\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "d81549f9-6e40-4d77-a944-c7d38a933e4f",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "selfie",
+											"type": "text"
+										},
+										{
+											"key": "images",
+											"type": "file",
+											"src": [
+												"s6hkZi55X/Screenshot from 2024-07-18 20-50-07.png"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "{{Url}}/auth/me/kyc",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"me",
+										"kyc"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:54:19 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Forget Password",
@@ -1172,17 +1909,95 @@
 							}
 						},
 						"url": {
-							"raw": "{{test-url}}/auth/forget-password",
+							"raw": "{{Url}}/auth/forget-password",
 							"host": [
-								"{{test-url}}"
+								"{{Url}}"
 							],
 							"path": [
 								"auth",
 								"forget-password"
 							]
-						}
+						},
+						"description": "### Forget Password\n\nThis endpoint is used to initiate the process of resetting the user's password by sending a reset link to the provided email address.\n\n#### Request Body\n\n- email (string, required): The email address for which the reset link should be sent.\n    \n\n#### Response\n\nUpon successful execution, the response will have a status code of 200 and a JSON object with a \"success\" key indicating whether the request was successful or not.\n\nExample:\n\n``` json\n{\n    \"success\": true\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "8f92c33b-d9b9-47dd-abaf-628824013a1d",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-source",
+										"value": "mobile",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"oudawy105@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/forget-password",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"forget-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:55:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Reset Password",
@@ -1192,20 +2007,13 @@
 					},
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"newPassword\":\"Kanarada@20\"\n}",
+							"raw": "{\n    \"newPassword\":\"Ouda@12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1221,9 +2029,81 @@
 								"auth",
 								"reset-password"
 							]
-						}
+						},
+						"description": "### Reset Password\n\nThis endpoint is used to reset the password for the user.\n\n#### Request Body\n\n- `newPassword` (string, required): The new password for the user.\n    \n\n#### Response\n\n- Status: 404\n    \n- Content-Type: application/json\n    \n- `message` (string): A message indicating the result of the password reset operation."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "3082d223-2f9f-4649-8acb-fd5f959f1f8e",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"newPassword\":\"Ouda@12345\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/reset-password",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:56:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-SuRA/yvUWUo8rK6x7dKURLeBo+0\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Not Found\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Check Email",
@@ -1252,9 +2132,151 @@
 								"auth",
 								"check-email"
 							]
-						}
+						},
+						"description": "### Auth Check Email\n\nThis endpoint is used to check the availability of an email for authentication.\n\n#### Request\n\n- Method: POST\n    \n- URL: {{Url}}/auth/check-email\n    \n- Body:\n    \n    - email (text, required): The email to be checked for availability.\n        \n\n#### Response\n\nThe response for this request is a JSON object with the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"success\": {\n      \"type\": \"boolean\"\n    },\n    \"errors\": {\n      \"type\": \"array\"\n    },\n    \"full_messages\": {\n      \"type\": \"array\"\n    }\n  }\n}\n\n ```\n\nThe response contains the following fields:\n\n- success (boolean): Indicates whether the email is available.\n    \n- errors (array): An array of error messages, if any.\n    \n- full_messages (array): An array of full messages, if any.\n    \n- Status: 404\n    \n- Content-Type: application/json"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "b63324db-1dcf-4f8a-b8df-156dad94b32e",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"irene@gochapaa.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/check-email",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"check-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:58:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						},
+						{
+							"id": "801afdb7-0ccf-43cd-b34d-dc0357cca739",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"irene@gochapaa1.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/check-email",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"check-email"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:58:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-mn2WJwJ82rjggL7UCuHeut6jcYE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Not found\"\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "Check phone",
@@ -1293,9 +2315,151 @@
 								"auth",
 								"check-phone"
 							]
-						}
+						},
+						"description": "### Auth Check Phone\n\nThis endpoint is used to check the validity of a phone number.\n\n#### Request Body\n\n- `phone` (text): The phone number to be checked.\n    \n\nExample:\n\n``` json\n{\n  \"phone\": \"+254746764503\"\n}\n\n ```\n\n#### Response\n\n- `success` (boolean): Indicates whether the phone number is valid or not.\n    \n\nExample:\n\n``` json\n{\n  \"success\": true\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "9958c618-4b17-4ba8-8c66-77c524449804",
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"0706119340\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/check-phone",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"check-phone"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:59:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "59"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b-mn2WJwJ82rjggL7UCuHeut6jcYE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Not found\"\n    ]\n}"
+						},
+						{
+							"id": "1445cbc6-57a0-402f-b259-c6f1be058188",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phone\": \"+254746764503\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/check-phone",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"check-phone"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 10:59:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Verify Ehash Email",
@@ -1722,7 +2886,8 @@
 								"auth",
 								"verify-reset-password-otp"
 							]
-						}
+						},
+						"description": "### Verify Reset Password OTP\n\nThe `POST` request is used to verify the OTP (One Time Password) for resetting the password associated with a specific email.\n\n#### Request Body\n\n- `email` (string, required): The email address for which the OTP is being verified.\n    \n- `otp` (string, required): The One Time Password to be verified.\n    \n\n#### Response\n\nThe response will be in JSON format and will conform to the following schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```\n\n- `status` (string): Indicates the status of the OTP verification process.\n    \n- `message` (string): Provides additional information about the verification status."
 					},
 					"response": []
 				},
@@ -1745,18 +2910,91 @@
 							}
 						},
 						"url": {
-							"raw": "{{url-dev}}/auth//resend-email-otp",
+							"raw": "{{Url}}/auth//resend-email-otp",
 							"host": [
-								"{{url-dev}}"
+								"{{Url}}"
 							],
 							"path": [
 								"auth",
 								"",
 								"resend-email-otp"
 							]
-						}
+						},
+						"description": "### Auth Resend Email OTP\n\nThis endpoint is used to resend the OTP (One-Time Password) to the provided email for authentication.\n\n#### Request Body\n\n- email (string, required): The email to which the OTP will be resent.\n    \n\n#### Response\n\n- Status: 200 OK\n    \n- Content-Type: application/json\n    \n- message (string): A message indicating the result of the OTP resend operation.\n    \n- otp (string): The OTP that has been resent to the provided email."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "311afeae-e08b-4bea-a7f6-2b1b1d783d15",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"oudawy105@gmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth//resend-email-otp",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"",
+										"resend-email-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:01:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-aRjjFfKmFveNdarx30CkhPUEPWQ\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"New OTP sent\",\n    \"otp\": \"316453\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Reset Password Phone",
@@ -1792,7 +3030,8 @@
 									"value": ""
 								}
 							]
-						}
+						},
+						"description": "The `POST /auth/reset-password-phone/:email` endpoint is used to reset the password associated with a user's email using their phone number.\n\n### Request Body\n\n- `newPassword` (string, required): The new password for the user's account.\n    \n\n### Response\n\nThe response of this request is a JSON schema that describes the structure of the response object returned by the API. The specific properties and their types will be defined in the JSON schema format."
 					},
 					"response": []
 				}
@@ -3876,9 +5115,74 @@
 								"general",
 								"get-otp"
 							]
-						}
+						},
+						"description": "### Get OTP\n\nThis endpoint makes an HTTP POST request to retrieve a one-time password (OTP).\n\n#### Request Body\n\n- `phone_number` (text, required): The phone number for which the OTP is to be generated.\n    \n\n#### Response\n\nThe response is a JSON object with the following schema:\n\n``` json\n{\n  \"success\": true\n}\n\n ```\n\nThe `success` field indicates whether the OTP retrieval was successful."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "5dce4822-63b4-4442-90c4-155d3c361d0a",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v1/general/get-otp",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"general",
+										"get-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:04:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				},
 				{
 					"name": "Verify OTP",
@@ -3919,9 +5223,155 @@
 								"general",
 								"verify-otp"
 							]
-						}
+						},
+						"description": "### Verify OTP\n\nThis endpoint is used to verify the OTP (One-Time Password) provided by the user.\n\n#### Request Body\n\n- `otp` (string, required): The OTP to be verified.\n    \n\n#### Response\n\nUpon successful verification, the response will have a status code of 200 and a JSON object with a `success` key indicating the success status.\n\nExample:\n\n``` json\n{\n    \"success\": true\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "6abefcca-8496-4dd4-b42d-ebc21ec18e34",
+							"name": "Invalid / Expired OTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"otp\": \"797364\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/api/v1/general/verify-otp",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"general",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:06:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d-1cFOnQejDQ4OEY1rS2nySIhnHco\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Invalid OTP\"\n    ]\n}"
+						},
+						{
+							"id": "37f00940-6bca-4fd5-8392-621272ef70a8",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"otp\":\"634885\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/api/v1/general/verify-otp",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"general",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:07:00 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				}
 			],
 			"id": "126ade4b-b8cd-4cb1-b97a-8bdcb7bcc29f"
@@ -3970,7 +5420,84 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"id": "6c7a6b67-5580-4e8a-ad02-1d0116530c88",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/api/v1/notification/all",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"notification",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:07:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"363f-piAu2pLYU2P/N/SJ3TwBvrrySCc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"69b90518-ea9f-424a-9f6f-77ec699a92dd\",\n        \"message\": \"M-Pesa deposit for KES 1 has been initialized successfully from 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-23T12:03:59.885Z\",\n        \"updatedAt\": \"2024-05-23T12:03:59.885Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"16a24304-62d8-45e9-9842-2beefa61d937\",\n        \"message\": \"SEN45IN0U8. Your withdrawal request for KES 10 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-23T12:07:42.289Z\",\n        \"updatedAt\": \"2024-05-23T12:07:42.289Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"377a7cc3-4737-46c0-b759-e52b766f2ea1\",\n        \"message\": \"Withdrawal request for KES 10 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-23T12:07:42.333Z\",\n        \"updatedAt\": \"2024-05-23T12:07:42.333Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"a69459bd-700b-4d2f-ac8f-148c1a69cb10\",\n        \"message\": \"SEO58ALPQ5. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:47.164Z\",\n        \"updatedAt\": \"2024-05-24T08:04:47.164Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"7717be07-5250-46c8-988e-953b61bd48c7\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:47.315Z\",\n        \"updatedAt\": \"2024-05-24T08:04:47.315Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"f4dd8271-fdd7-4d30-bef5-46cf4c136508\",\n        \"message\": \"SEO18ALZMF. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.066Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.066Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"801904ad-b26b-4dd5-9e6b-a8cba846f0df\",\n        \"message\": \"SEO68AM7PE. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.099Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.099Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"f466a27c-323e-40da-86a2-b53c40e2f129\",\n        \"message\": \"SEO38AM391. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.145Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.145Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"0b414293-3f58-409a-ae1a-7f4d24d9a5d0\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.200Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.200Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"acc62e84-f2a3-4a8b-aac2-cfd70bf5c4e2\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.291Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.291Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"9e28a418-33bb-4f17-a7ea-0c88213e3680\",\n        \"message\": \"SEO28AMC6O. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.538Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.538Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"ff53bee4-f6f9-42c0-9f9e-a8db7a331cce\",\n        \"message\": \"SEO38AM2MT. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.632Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.632Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"694c8bca-6e95-42e8-b78c-220fc00b6fdb\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:49.742Z\",\n        \"updatedAt\": \"2024-05-24T08:04:49.742Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"b73325bf-9151-45f5-a3a8-ed0efd5add47\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:55.403Z\",\n        \"updatedAt\": \"2024-05-24T08:04:55.403Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"378adf17-6ef5-4bdd-a84c-e3e51643db18\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T08:04:55.651Z\",\n        \"updatedAt\": \"2024-05-24T08:04:55.651Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"7e7d93af-b463-4ea8-867b-950f8f63c7de\",\n        \"message\": \"SEO28LDO4C. Your withdrawal request for KES 50 has been processed successfully. \",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T09:36:10.309Z\",\n        \"updatedAt\": \"2024-05-24T09:36:10.309Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"212cd042-9518-4d33-bc8a-36d275c4c048\",\n        \"message\": \"Withdrawal request for KES 50 has been initialized successfully to 254746764503\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-24T09:36:10.390Z\",\n        \"updatedAt\": \"2024-05-24T09:36:10.390Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"1c3961bd-4dde-4d63-b249-7912014e923b\",\n        \"message\": \"You have have successfully bought 0.00009740968174308782 ETH from GoChapaa. Thank you!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-05-28T07:13:26.816Z\",\n        \"updatedAt\": \"2024-05-28T07:13:26.816Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"d95628cb-0f4e-4379-ae1b-18b2e81af69b\",\n        \"message\": \"You have received ETH 0.05000000000000000000 from 0x159cA92b12F67E5676d82C238f4906692618A555!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-04T12:31:49.789Z\",\n        \"updatedAt\": \"2024-07-04T12:31:49.789Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"f29038b3-eb4e-4b03-a1d7-08cef89d3a63\",\n        \"message\": \"Your request to transfer ETH 0.00010000000000000000 to 0x159cA92b12F67E5676d82C238f4906692618A555 could not be completed, the amount has been refunded to your wallet.\",\n        \"isRead\": false,\n        \"type\": \"error\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-04T12:32:34.486Z\",\n        \"updatedAt\": \"2024-07-04T12:32:34.486Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"591ae37f-ed85-430a-b326-06729f8b2709\",\n        \"message\": \"Your request to transfer ETH 0.00010000000000000000 to 0x159cA92b12F67E5676d82C238f4906692618A555 could not be completed, the amount has been refunded to your wallet.\",\n        \"isRead\": false,\n        \"type\": \"error\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-04T12:35:17.254Z\",\n        \"updatedAt\": \"2024-07-04T12:35:17.254Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"473c54ef-9e4b-42d4-a28f-98234c43a17c\",\n        \"message\": \"Your request to transfer ETH 0.00010000000000000000 to 0x159cA92b12F67E5676d82C238f4906692618A555 could not be completed, the amount has been refunded to your wallet.\",\n        \"isRead\": false,\n        \"type\": \"error\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-04T12:46:17.598Z\",\n        \"updatedAt\": \"2024-07-04T12:46:17.598Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"c04241be-fcf6-48b0-9fec-1174e33d79aa\",\n        \"message\": \"Your request to transfer ETH 0.01000000000000000000 to 0x159cA92b12F67E5676d82C238f4906692618A555 could not be completed, the amount has been refunded to your wallet.\",\n        \"isRead\": false,\n        \"type\": \"error\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-04T12:47:34.545Z\",\n        \"updatedAt\": \"2024-07-04T12:47:34.545Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"1a670d12-1256-424d-9c1e-c340b0a9825c\",\n        \"message\": \"Your request to transfer ETH 0.01000000000000000000 to 0x388f07245d5F1d6E69A8256a27CC80b5460772F9 could not be completed, the amount has been refunded to your wallet.\",\n        \"isRead\": false,\n        \"type\": \"error\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-04T12:50:43.307Z\",\n        \"updatedAt\": \"2024-07-04T12:50:43.307Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"5fb37e71-b577-4453-8577-85c557186165\",\n        \"message\": \"Your request to withdraw ETH 0.00010000000000000000 to 0x54d03EC0C462e9a01F77579C090cdE0FC2617817 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T06:57:53.492Z\",\n        \"updatedAt\": \"2024-07-10T06:57:53.492Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"2fa69a5c-a9f1-40b2-b77d-037c5bdaecf8\",\n        \"message\": \"Your request to withdraw ETH 0.00010000000000000000 to 0x54d03EC0C462e9a01F77579C090cdE0FC2617817 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T07:02:51.407Z\",\n        \"updatedAt\": \"2024-07-10T07:02:51.407Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"70ea5316-ed35-41a6-bc53-dded0ee4e143\",\n        \"message\": \"Your request to withdraw ETH 0.00010000000000000000 to 0x54d03EC0C462e9a01F77579C090cdE0FC2617817 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T07:53:54.469Z\",\n        \"updatedAt\": \"2024-07-10T07:53:54.469Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"219b187e-eee4-4f2d-95c3-94bfe50faa5b\",\n        \"message\": \"Your request to withdraw ETH 0.00010000000000000000 to 0x54d03EC0C462e9a01F77579C090cdE0FC2617817 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T07:58:41.349Z\",\n        \"updatedAt\": \"2024-07-10T07:58:41.349Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"0799ca55-e602-44be-aac4-fc37e6f94cd9\",\n        \"message\": \"Your request to withdraw ETH 0.00010000000000000000 to 0x54d03EC0C462e9a01F77579C090cdE0FC2617817 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T08:15:33.528Z\",\n        \"updatedAt\": \"2024-07-10T08:15:33.528Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"4ab79521-6014-4ee7-ad28-02dc46fd8c9e\",\n        \"message\": \"Your request to withdraw ETH 0.00010000000000000000 to 0x54d03EC0C462e9a01F77579C090cdE0FC2617817 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T08:20:31.765Z\",\n        \"updatedAt\": \"2024-07-10T08:20:31.765Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"dc55c0e0-722a-413e-a9fe-df1518571c4c\",\n        \"message\": \"You have received BTC 0.00004900000000000000 from tb1py7k0ry9jdm0cvkxc3fleyxndhp0pj8jm8d73l0f02tkhxz5asdmqu2a25h!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T12:51:58.494Z\",\n        \"updatedAt\": \"2024-07-10T12:51:58.494Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"2ce4417f-efe8-4654-8af2-29df4b0705da\",\n        \"message\": \"You have received BTC 0.00032249000000000000 from tb1qc3x97wg9yx9njps2kyhax43rxlyrjqn9ra5xna!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-10T12:51:58.896Z\",\n        \"updatedAt\": \"2024-07-10T12:51:58.896Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"13a3c6c0-d364-4aff-b283-be4a89efedb7\",\n        \"message\": \"Your request to withdraw USDT 200.00000000000000000000 to 0x1df8EA127432CF81553f5E9C88478f84C24f30D2 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-29T07:19:25.060Z\",\n        \"updatedAt\": \"2024-07-29T07:19:25.060Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"cc77a3d6-4753-41e4-88de-661791986c73\",\n        \"message\": \"Your request to withdraw USDT 200.00000000000000000000 to 0x1df8EA127432CF81553f5E9C88478f84C24f30D2 has been processed and completed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-07-29T07:24:42.181Z\",\n        \"updatedAt\": \"2024-07-29T07:24:42.181Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"6d7ecb8c-0169-45d2-818c-36d7050861ae\",\n        \"message\": \"Your request to transfer BTC 0.00017149 to irene@gochapaa.com has been processed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-08-28T15:39:25.970Z\",\n        \"updatedAt\": \"2024-08-28T15:39:25.970Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"71cef98d-6b1b-4ea5-889c-9bda20de6808\",\n        \"message\": \"Your request to transfer ETH 0.02923096 to irene@gochapaa.com has been processed successfully!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-09-04T14:09:43.513Z\",\n        \"updatedAt\": \"2024-09-04T14:09:43.513Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"c5c055f0-9e41-49c5-ba34-fc4642ba4396\",\n        \"message\": \"Hi Ouda, Your request to withdraw eth 0.001 to 0x1df8EA127432CF81553f5E9C88478f84C24f30D2 has been received. The administrator will approve/reject it in the next 30 minutes or less!\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-09-18T07:35:14.801Z\",\n        \"updatedAt\": \"2024-09-18T07:35:14.801Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"ea2650e7-1194-4d00-a734-1b46a493bde7\",\n        \"message\": \"Hi Ouda, Your request to withdraw eth 0.001 to 0x1df8EA127432CF81553f5E9C88478f84C24f30D2 has been received. The administrator will approve/reject it in the next 30 minutes or less!\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-09-18T07:38:41.285Z\",\n        \"updatedAt\": \"2024-09-18T07:38:41.285Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"7efe04a6-d9b8-4f58-aef1-d99e5d96b554\",\n        \"message\": \"You have received ETH 0.01000000000000000000 from 0x1df8EA127432CF81553f5E9C88478f84C24f30D2!\",\n        \"isRead\": false,\n        \"type\": \"success\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-09-19T05:31:27.573Z\",\n        \"updatedAt\": \"2024-09-19T05:31:27.573Z\",\n        \"deletedAt\": null\n    },\n    {\n        \"id\": \"6c1aa714-04c1-4497-b3ce-f11bee64f9b8\",\n        \"message\": \"Your KYC documents have been uploaded successfully. We will notify you when the verification process is complete. Thank you!\",\n        \"isRead\": false,\n        \"type\": \"information\",\n        \"userId\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"createdAt\": \"2024-10-14T10:54:19.542Z\",\n        \"updatedAt\": \"2024-10-14T10:54:19.542Z\",\n        \"deletedAt\": null\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Get All User Unread Notifications",
@@ -4002,9 +5529,74 @@
 								"notification",
 								"unread-count"
 							]
-						}
+						},
+						"description": "### Get Unread Notification Count\n\nThis endpoint retrieves the count of unread notifications.\n\n#### Request\n\n- Method: GET\n    \n- URL: `{{Url}}/api/v1/notification/unread-count`\n    \n\n#### Response\n\n- Status: 200 OK\n    \n- Content-Type: application/json\n    \n\n``` json\n{\n    \"count\": 0\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "61dc878b-3a41-4bc6-a660-9dea9e0d5816",
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v1/notification/unread-count",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"notification",
+										"unread-count"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:08:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "12"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c-WvmUVWlUVvlUFVY8BTvsBpK/L9U\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 40\n}"
+						}
+					]
 				},
 				{
 					"name": "Read Notification",
@@ -4046,9 +5638,84 @@
 								"read",
 								"595978bd-101e-4c74-b862-016d39eaa8f2"
 							]
-						}
+						},
+						"description": "### Update Notification Status\n\nThis endpoint allows the client to update the status of a specific notification by marking it as read.\n\n#### Request Body\n\n- No request body is required for this endpoint.\n    \n\n#### Response\n\nThe response for this request is a JSON object with the following schema:\n\n``` json\n{\n  \"success\": \"boolean\"\n}\n\n ```\n\n- `success` (boolean): Indicates whether the notification status update was successful (true) or not (false)."
 					},
-					"response": []
+					"response": [
+						{
+							"id": "a57783db-8c61-4bbf-adc5-92a9ce0537d1",
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/api/v1/notification/read/69b90518-ea9f-424a-9f6f-77ec699a92dd",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"notification",
+										"read",
+										"69b90518-ea9f-424a-9f6f-77ec699a92dd"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 11:10:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						}
+					]
 				}
 			],
 			"id": "7aebbd23-19ca-4bea-bfd8-8bee0f857497"
@@ -4901,13 +6568,20 @@
 		}
 	],
 	"auth": {
-		"type": "bearer"
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
 	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "660a597a-6256-4ed7-ba88-d456f842d3bf",
+				"id": "a34f08e5-0320-4974-8db8-6859758ca747",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -4917,7 +6591,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ad70f031-e695-4d86-8827-844c77901a42",
+				"id": "992d9cf9-25a5-4acb-b3e7-c93c56e61db2",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -4927,25 +6601,25 @@
 	],
 	"variable": [
 		{
-			"id": "3f8fce47-7322-4e13-9688-6e267e725230",
+			"id": "64323485-35af-4477-b3ea-78d3d4e056fe",
 			"key": "url",
 			"value": "https://api.gochapaa.io",
 			"type": "string"
 		},
 		{
-			"id": "b6c5f94c-1097-4b9f-8f6f-78039dfafc0a",
+			"id": "af1b2e0a-3914-4dbf-8e29-1db279f909c7",
 			"key": "url-dev",
 			"value": "http://localhost:5000",
 			"type": "string"
 		},
 		{
-			"id": "7b175d11-e9a4-40a4-a52a-13f7a44928fe",
-			"key": "access_token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGMyNGZhLWY1NTYtNDU2NC1iNDQ5LWIzOTJkYjE4N2Y5MiIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzI2NzIzMzU2LCJleHAiOjE3MjY3MjY5NTZ9.vRcgElKds2MJ454_YzLVhC_yYqEULpHRxu1wBFZuayM",
+			"id": "299b6930-9399-421e-959e-7872745634fe",
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGMyNGZhLWY1NTYtNDU2NC1iNDQ5LWIzOTJkYjE4N2Y5MiIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzI4OTAyNTcwLCJleHAiOjE3Mjg5MDYxNzB9.iWnEZiibcdv8WN7Se-4tA2Tfy3z8mgTtRJQAnlukK14",
 			"type": "string"
 		},
 		{
-			"id": "d5656e3a-6765-42f5-a540-41c886c577bb",
+			"id": "2016e00d-8981-4a81-b0ab-28085e527f56",
 			"key": "test-url",
 			"value": "https://api-test-env.gochapaa.io",
 			"type": "string"
