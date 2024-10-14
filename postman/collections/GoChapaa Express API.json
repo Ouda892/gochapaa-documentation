@@ -1,0 +1,4954 @@
+{
+	"info": {
+		"_postman_id": "a86d2c42-39d8-4016-802e-f5f1788039a4",
+		"name": "GoChapaa Express API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "33609843-a86d2c42-39d8-4016-802e-f5f1788039a4"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Confirm Phone",
+					"id": "60b1f418-be48-4af8-bdf9-019f5059d76d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone\": \"+254791798403\",\n  \"otp\": \"700959\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/confirmPhone",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"confirmPhone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"id": "0e9878d5-2751-483f-bb2b-28a3f91b4dae",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ouda.wycliffe1@gmail.com\",\n  \"password\":\"Ouda@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/login",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "### Login Authentication\n\nThis endpoint allows users to authenticate and obtain access to the system.\n\n#### Request Body\n\n- `email` (string, required): The email address of the user.\n    \n- `password` (string, required): The password for the user account.\n    \n\n#### Response\n\n- Status: 409 Conflict\n    \n- Content-Type: application/json\n    \n\nThe response indicates that the email has not been verified. The `success` field is `true`, and the `full_messages` array is empty, indicating that the email is unverified.\n\nThis endpoint allows users to authenticate and obtain access to the system.\n\n#### Request Body\n\n- `email` (string, required): The email address of the user.\n    \n- `password` (string, required): The password for the user account.\n    \n\n#### Response\n\n- Status: 200 OK\n    \n- Content-Type: application/json\n    \n\nThe response will include the following fields:\n\n- `success` (boolean): Indicates if the authentication was successful.\n    \n- `user` (object): Contains user information including id, firstName, lastName, middleName, email, date_of_birth, phone, roles, profile_picture, token, refreshToken, nationality_code, nationality_name, nationality_dial_code, subscribed_to_newsletters.\n    \n\nThis endpoint allows users to authenticate and obtain access to the system.\n\n#### Request Body\n\n- `email` (string, required): The email address of the user.\n    \n- `password` (string, required): The password for the user account.\n    \n\n#### Response\n\n- Status: 422 Unprocessable Entity\n    \n- Content-Type: application/json\n    \n\nThe response will include an error message and a list of errors, each containing the value, message, parameter, and location that caused the request to be unprocessable."
+					},
+					"response": [
+						{
+							"id": "130073e8-1717-4946-922b-69b3f4139f65",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"ouda.wycliffe@gmail.com\",\n  \"password\":\"Ouda@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/login",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:39:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "912"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"390-e/6EmHLznuxIRSI8hZgilJJZUKY\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"user\": {\n        \"id\": \"63dc24fa-f556-4564-b449-b392db187f92\",\n        \"firstName\": \"Ouda\",\n        \"lastName\": \"Wycliffe\",\n        \"middleName\": null,\n        \"email\": \"ouda.wycliffe@gmail.com\",\n        \"date_of_birth\": null,\n        \"phone\": \"+254746764503\",\n        \"roles\": [\n            \"ROLE_USER\"\n        ],\n        \"profile_picture\": [],\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGMyNGZhLWY1NTYtNDU2NC1iNDQ5LWIzOTJkYjE4N2Y5MiIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzI4ODk4NzQyLCJleHAiOjE3Mjg5MDIzNDJ9.2X2nt9T3Bx_jgG3ZaOq4RHbYEhdYVDwF8imuMnhUJL4\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGMyNGZhLWY1NTYtNDU2NC1iNDQ5LWIzOTJkYjE4N2Y5MiIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzI4ODk4NzQyLCJleHAiOjE3Mjg5MDU5NDJ9.RZeOPu36OSlmvY_RoCNiSjvgfhMM6OkCP1A5v-9Igoo\",\n        \"nationality_code\": null,\n        \"nationality_name\": null,\n        \"nationality_dial_code\": null,\n        \"subscribed_to_newsletters\": false\n    }\n}"
+						},
+						{
+							"id": "3ec8dcfa-5d1b-452e-b55a-947139fdf907",
+							"name": "Wrong Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"ouda.wycliffe@gmail.com\",\n  \"password\":\"Ouda@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/login",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:39:56 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-a8IxiSoVcI6qTHelvgyMwFDtVMc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Incorrect password!\"\n    ]\n}"
+						},
+						{
+							"id": "a92d9e85-a035-4d7f-b21f-82ce57451194",
+							"name": "Wrong Login Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"ouda.wycliffe1@gmail.com\",\n  \"password\":\"Ouda@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/login",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:40:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5b-wfQQIm2Dc/3gpZBBjDmER5M8Miw\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"There is no user with this email address!\"\n    ]\n}"
+						},
+						{
+							"id": "8fb35e09-22f2-4c94-99cb-a8e6e1927f3c",
+							"name": "Missing Fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"\",\n  \"password\":\"Ouda@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/login",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:41:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f-pszMWpLx5i5ZaTfGo4mOCcCGJUc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"value\": \"\",\n            \"msg\": \"Invalid value\",\n            \"param\": \"email\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						},
+						{
+							"id": "5d326ffb-b3c4-4690-81d8-ec7478d301db",
+							"name": "Unverified User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"wycliffe@gochapaa.com\",\n  \"password\":\"Ouda@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/login",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:48:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-fzYduKspU8GWFJ217F5faSao4tc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Kindly verify your email first!\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"id": "5381099f-482a-47c7-a003-4c5b9901714b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"GoChapaa\",\n  \"email\": \"test.gpchapaa.com\",\n  \"phone\": \"+254745678912\",\n  \"password\": \"Test@1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/register",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9027edaa-0d87-4ef0-b97e-330a6688a7b1",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Ouda\",\n  \"lastName\": \"Wycliffe\",\n  \"email\": \"wycliffe@gochapaa.com\",\n  \"phone\": \"+254746764504\",\n  \"password\": \"Ouda@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/register",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:45:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "114"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"72-iO9emuRpebVrNfIH7Pv9J81TC0M\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"user_id\": \"ef140de3-98ec-4d57-94ae-1bf4b7e568ae\",\n    \"full_messages\": [\n        \"User registered successfully\"\n    ]\n}"
+						},
+						{
+							"id": "a083905a-c29a-4644-bd05-41ba0e1329b6",
+							"name": "Reused Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Ouda\",\n  \"lastName\": \"Wycliffe\",\n  \"email\": \"wycliffe@gochapaa.com\",\n  \"phone\": \"+254746764504\",\n  \"password\": \"Ouda@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/register",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:45:42 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "252"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fc-gKUtW0PSW6kggU3mICGF9RqNCws\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": {\n        \"phone\": \"Phone number: +254746764504 is already taken\",\n        \"email\": \"Email: wycliffe@gochapaa.com is already taken\"\n    },\n    \"full_messages\": [\n        \"Phone number: +254746764504 is already taken\",\n        \"Email: wycliffe@gochapaa.com is already taken\"\n    ]\n}"
+						},
+						{
+							"id": "bb93b8de-8f54-476a-b048-e783d43532e9",
+							"name": "Validation Errors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"Wycliffe\",\n  \"email\": \"\",\n  \"phone\": \"+254746764504\",\n  \"password\": \"Ouda@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/register",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:46:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6f-pszMWpLx5i5ZaTfGo4mOCcCGJUc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation errors\",\n    \"errors\": [\n        {\n            \"value\": \"\",\n            \"msg\": \"Invalid value\",\n            \"param\": \"email\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user info",
+					"id": "0f817693-1fdd-4201-b400-fc1b4cd526b4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/auth/me",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user info",
+					"id": "d4400a02-a4ed-4c69-b403-ba1f8f6a5c2d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"irene\",\n  \"lastName\": \"irene\",\n  \"middleName\": \"O\",\n  \"phone\": \"+254747917984\",\n  \"dateOfBirth\": \"12/1/2004\",\n  \"nationalityName\":\"Kenyan\",\n  \"subscribedToNewsletters\": true,\n  \"email\": \"irenemessage2@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/me",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"id": "26001633-53d8-43c3-a93a-f22880902d36",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/auth/me",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"id": "e19a78b4-ab2d-4fbe-bc07-1a4640552323",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"current\": \"password\",\n  \"password\": \"Password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/me/password",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"me",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All users",
+					"id": "8a493a84-b4cd-422e-a1db-2705c8162bbf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/auth/allUsers",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"allUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload profile pic",
+					"id": "880fcc29-0407-40e0-8713-936fd39527d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"value": null
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/auth/me/profilePicture",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"me",
+								"profilePicture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Phone Verification Code",
+					"id": "16a6bcec-93bf-4287-9ee6-7b173703b463",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"+254746764503\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test-url}}/auth/sendPhoneVerificationCode",
+							"host": [
+								"{{test-url}}"
+							],
+							"path": [
+								"auth",
+								"sendPhoneVerificationCode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Phone",
+					"id": "620d4e71-3984-4154-bc8d-0f23799996e6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"+254746764503\",\n    \"otp\": \"406298\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test-url}}/auth/confirmPhone",
+							"host": [
+								"{{test-url}}"
+							],
+							"path": [
+								"auth",
+								"confirmPhone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Email OTP",
+					"id": "05fe9db3-cfe3-4134-87d1-7feab17a2a4e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"oudawy105@gmail.com\",\n    \"otp\": \"639055\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/auth/confirmEmail",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"auth",
+								"confirmEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload profile picture",
+					"id": "85b9b5d7-4dfc-4a3c-adf0-347f28c93879",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "postman-cloud:///1eee2842-cd80-48a0-a43d-85db57ad46eb"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/auth/me/profilePicture",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"me",
+								"profilePicture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user profile picture",
+					"id": "d1c2a6b4-e700-49cb-9fdc-0e2eb2635401",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/auth/me/profilePicture",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"me",
+								"profilePicture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/public/images/profile/images-1710480387025.png",
+					"id": "14ed0aa0-fd83-41dc-baf7-5b506fe2bbb4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/public/images/profile/images-1710480387025.png",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"public",
+								"images",
+								"profile",
+								"images-1710480387025.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload KYC Document",
+					"id": "e7491fd3-f84c-4a5e-9d13-454d74668300",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type",
+									"value": "selfie",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "s6hkZi55X/Screenshot from 2024-07-18 20-50-07.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Url}}/auth/me/kyc",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"me",
+								"kyc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"id": "07516917-e136-40e6-a6d6-b80189145dbc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-source",
+								"value": "mobile",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"oudawy105@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{test-url}}/auth/forget-password",
+							"host": [
+								"{{test-url}}"
+							],
+							"path": [
+								"auth",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"id": "6e2e8605-a03b-4fba-b207-5b3a0b15bcce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newPassword\":\"Kanarada@20\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/reset-password",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Email",
+					"id": "0786f239-a075-4e17-82c7-818f3f3ef6ff",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"irene@gochapaa.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/check-email",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"check-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check phone",
+					"id": "f86c9f3b-da08-4f0a-841d-27792d31fc49",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"0706119340\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/check-phone",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"check-phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Ehash Email",
+					"id": "deeda20b-f5ca-41cc-bea7-26826e9d4625",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"wycliffe@gochapaa.com\",\n    \"ehash\": \"a562ff563b16048c5a27b1a5d267a9f4269331ca4911b98ad881db7b19bc8020\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/verify-ehash-email",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"verify-ehash-email"
+							]
+						},
+						"description": "# Auth Verify Ehash Email\n\nThis endpoint is used to verify the email hash.\n\n## Request\n\n- Method: POST\n    \n- URL: {{Url}}/auth/verify-ehash-email\n    \n- Body:\n    \n    - email (text, required): The email address to be verified.\n        \n    - ehash (text, required): The email hash for verification.\n        \n\n## Response\n\n- Status: 404\n    \n- Content-Type: application/json\n    \n- { \"success\": true, \"errors\": \\[\\], \"full_messages\": \\[\"\"\\]}\n    \n\n## Possible Scenarios\n\n- **Success (Status: 404)**\n    \n    - When the email hash is successfully verified.\n        \n    - The response will contain a `success` flag set to `true` and an empty `errors` array.\n        \n- **Failure**\n    \n    - If the email hash verification fails, the response may contain relevant error messages in the `errors` array.\n        \n\nThis endpoint is used to verify the email hash.\n\n#### Request Body\n\n- `email` (string): The email address for verification.\n    \n- `ehash` (string): The email hash for verification.\n    \n\n#### Response\n\n- `success` (boolean): Indicates if the verification was successful.\n    \n- `errors` (array): An array of error messages, if any.\n    \n- `full_messages` (array): An array of full error messages, if any.\n    \n\n#### Example\n\n``` json\n{\n    \"email\": \"user@example.com\",\n    \"ehash\": \"a562ff563b16048c5a27b1a5d267a9...\"\n}\n\n ```\n\n``` json\n{\n    \"success\": true,\n    \"errors\": [],\n    \"full_messages\": [\"\"]\n}\n\n ```"
+					},
+					"response": [
+						{
+							"id": "165d9998-78ec-4607-afa2-fd7dc80b432e",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"wycliffe@gochapaa.com\",\n    \"ehash\": \"a562ff563b16048c5a27b1a5d267a9f4269331ca4911b98ad881db7b19bc8020\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/verify-ehash-email",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"verify-ehash-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:52:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						},
+						{
+							"id": "031f8f47-730e-405f-871d-9b4ceb97cdad",
+							"name": "Invalid Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"wycliffe@gochapaa.com\",\n    \"ehash\": \"a562ff563b16048c5a27b1a5d267a9f4269331ca4911b98ad881db7b19bc80201\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/verify-ehash-email",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"verify-ehash-email"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:52:32 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-OUhSHMS82oTGsI6Pi60XVM0DBN8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Invalid token\"\n    ]\n}"
+						},
+						{
+							"id": "e2b29edb-4085-49a0-b736-9602e30ba572",
+							"name": "Used Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"wycliffe@gochapaa.com\",\n    \"ehash\": \"a562ff563b16048c5a27b1a5d267a9f4269331ca4911b98ad881db7b19bc8020\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{Url}}/auth/verify-ehash-email",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"verify-ehash-email"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:53:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-tdlK7W9cZneHoRxyKHFYa2fw9EU\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Token already used\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Resend Email Verification link",
+					"id": "5202292b-cdf0-4720-aab7-fb8cd77c56f8",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/auth/resend-email-verification/:email",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"resend-email-verification",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						},
+						"description": "# Resend Email Verification\n\nThis endpoint is used to resend the email verification to the specified email address.\n\n## Request Body\n\n- email (string, required): The email address to which the verification email will be resent.\n    \n\n## Response\n\nThe response for this request can have the following scenarios:\n\n### Success Response\n\n- Status: 404\n    \n- Content-Type: application/json\n    \n- success (boolean): Indicates if the email verification resend was successful.\n    \n- errors (array): An array of any errors encountered during the email verification resend.\n    \n- full_messages (array): An array of full error messages, if any.\n    \n\n### Failure Response\n\n- Status: 404\n    \n- Content-Type: application/json\n    \n- success (boolean): Indicates if the email verification resend was unsuccessful.\n    \n- errors (array): An array of any errors encountered during the email verification resend.\n    \n- full_messages (array): An array of full error messages, if any.\n    \n\n### Edge Cases\n\n- Status: 404\n    \n- Content-Type: application/json\n    \n- success (boolean): Indicates if the email verification resend was successful.\n    \n- errors (array): An array of any errors encountered during the email verification resend.\n    \n- full_messages (array): An array of full error messages, if any.\n    \n\nThis endpoint is used to resend the email verification to the specified email address.\n\n## Request Body\n\n- email (string, required): The email address to which the verification email will be resent.\n    \n\n## Response\n\n- Status: 404\n    \n- Content-Type: application/json\n    \n- success (boolean): Indicates if the email verification resend was successful.\n    \n- errors (array): An array of any errors encountered during the email verification resend.\n    \n- full_messages (array): An array of full error messages, if any."
+					},
+					"response": [
+						{
+							"id": "c1f103d6-c35b-4cb4-8876-cfb182314b95",
+							"name": "For Verified email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/auth/resend-email-verification/wycliffe@gochapaa.com",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"resend-email-verification",
+										"wycliffe@gochapaa.com"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:54:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-uiEF+ZJ/v6EZxUSNpJvvUlP4xiI\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Email already verified\"\n    ]\n}"
+						},
+						{
+							"id": "08fb2b9e-7665-450e-94f7-c908c5eb6c3b",
+							"name": "For non-existing email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/auth/resend-email-verification/wycliffe1@gochapaa.com",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"auth",
+										"resend-email-verification",
+										"wycliffe1@gochapaa.com"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Oct 2024 09:54:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-OUhSHMS82oTGsI6Pi60XVM0DBN8\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"errors\": [],\n    \"full_messages\": [\n        \"Invalid token\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify Forget Password OTP",
+					"id": "d7af5167-135d-44c2-864f-ce894b63e24a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"reuben@gochapaa.com\",\n    \"otp\": \"562207\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/verify-reset-password-otp",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"verify-reset-password-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resend Email OTP",
+					"id": "c874540d-1839-46f6-97da-94d05b9fb352",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/auth//resend-email-otp",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"auth",
+								"",
+								"resend-email-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Phone",
+					"id": "106e6115-7406-4530-b46d-320393cbd8b1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newPassword\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/auth/reset-password-phone/:email",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password-phone",
+								":email"
+							],
+							"variable": [
+								{
+									"key": "email",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "1711dce0-e3d7-48b2-b273-c73df83bc815"
+		},
+		{
+			"name": "Paymnents",
+			"item": [
+				{
+					"name": "Stk Push",
+					"id": "a105ad44-9c85-47f9-a591-d403614fe943",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 1,\n    \"phone\": \"254791798403\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/stkpush",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"stkpush"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Callback Url",
+					"id": "06520f11-ae20-40c4-b212-e445649fe282",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://571f-41-90-186-50.ngrok-free.app/api/v1/payments/callback",
+							"protocol": "https",
+							"host": [
+								"571f-41-90-186-50",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"callback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Payment",
+					"id": "abe7ade0-0e75-4e9e-a818-8f157974f841",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"checkoutRequestId\": \"ws_CO_25032024134017407746764503\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/payments/confirm",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Transactions",
+					"id": "04c2891d-090a-496f-b6a1-4c3958425ad1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/transactions",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "47c58eac-8e29-4a4f-838b-de47261c80b7",
+							"name": "Get All Transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{Url}}/api/v1/payments/transactions",
+									"host": [
+										"{{Url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"payments",
+										"transactions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.18.0 (Ubuntu)",
+									"uuid": "622049a1-c35f-4009-8df6-562893c5532c"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 09 May 2024 11:12:54 GMT",
+									"uuid": "94f90519-6a52-477c-98db-e6f7bcb08976"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"uuid": "25ce749f-5b50-4223-b389-b4291609da34"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"uuid": "310419b7-33b1-4508-a662-010d20991410"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"uuid": "245d9461-b76e-41a5-bcc4-e35b35983216"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"uuid": "186a6cf2-36ba-417d-9f1d-d58e4533e577"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"uuid": "6d766e2a-f815-4421-a0e0-ebef37ad8835"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f98-66IX3cZRndU9nW7Ke9CAT7WcO/A\"",
+									"uuid": "61fbeec3-67b6-4d36-a106-07b42a9d970f"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding",
+									"uuid": "188c6ee8-3c6b-4a56-9369-20c25187d94b"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip",
+									"uuid": "cdd612a9-b3ac-4868-acf8-b273f2f21f37"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"page_meta\": {\n        \"current_items_count\": 23,\n        \"total_items_count\": 23,\n        \"offset\": 0,\n        \"requested_page_size\": 100,\n        \"current_page_number\": 1,\n        \"prev_page_number\": 1,\n        \"number_of_pages\": 1,\n        \"has_next_page\": false,\n        \"next_page_number\": 1,\n        \"has_prev_page\": false,\n        \"next_page_url\": \"/api/v1/payments?page=1&page_size=100\",\n        \"prev_page_url\": \"/api/v1/payments?page=1&page_size=100\"\n    },\n    \"transactions\": [\n        {\n            \"id\": \"ad7aceac-aef7-41b7-af4e-60390d9a8e9b\",\n            \"transaction_kind\": \"bitcoin\",\n            \"transaction_type\": \"buy\",\n            \"transaction_id\": \"39f35ffa-b692-4911-8599-210f52435714\",\n            \"transaction_reference\": \"a0e8c25d-cc88-4ab1-a245-9f13d48ad071\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 0.000018366399382497163,\n            \"source_address\": \"tb1qaedzpvln47x5z52z9d6utc75ulmuzxe9aq8zh7\",\n            \"destination_address\": \"tb1q3gfx2me4wkjhzhlaqs6nu3hmscvusd698kuwj3\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 0.000028125000000000003,\n            \"created_at\": \"2024-05-09T10:51:05.121Z\",\n            \"updated_at\": \"2024-05-09T10:51:05.121Z\"\n        },\n        {\n            \"id\": \"b41b1d92-5aec-49a5-b9f7-9625bc67c5fb\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"deposit\",\n            \"transaction_id\": \"adb44d50-ba23-4b43-81bb-745e484ea345\",\n            \"transaction_reference\": \"ws_CO_09052024134709294706678178\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"commission\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T10:47:12.072Z\",\n            \"updated_at\": \"2024-05-09T10:47:53.577Z\"\n        },\n        {\n            \"id\": \"857c52f9-89f9-4297-b245-97097846fc06\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"deposit\",\n            \"transaction_id\": \"9220e575-b061-4ed4-9a24-8e8d5079560b\",\n            \"transaction_reference\": \"ws_CO_09052024132337739798293922\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"commission\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T10:23:40.503Z\",\n            \"updated_at\": \"2024-05-09T10:24:22.005Z\"\n        },\n        {\n            \"id\": \"10184355-0e33-402f-aa5e-32b0e62a3fee\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"cb5ddf6e-5efd-4d77-8820-911b5e2f0ecc\",\n            \"transaction_reference\": \"AG_20240509_2040542312db24176bb2\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T10:09:07.509Z\",\n            \"updated_at\": \"2024-05-09T10:09:08.314Z\"\n        },\n        {\n            \"id\": \"89a66421-6abd-46f7-900f-42dfd8e87056\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"fbc95ab7-a343-4270-9a4f-89b61a3292de\",\n            \"transaction_reference\": \"AG_20240509_204014e6156324dd9200\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T10:09:06.302Z\",\n            \"updated_at\": \"2024-05-09T10:09:07.165Z\"\n        },\n        {\n            \"id\": \"edfaa2ad-51e1-43a6-8d05-32f9a18eea6e\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"f4d3ab7a-e395-40f3-8ae7-9ab4d959e927\",\n            \"transaction_reference\": \"AG_20240509_206046f55e1655ca0669\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T10:09:04.157Z\",\n            \"updated_at\": \"2024-05-09T10:09:05.054Z\"\n        },\n        {\n            \"id\": \"2fe490b5-e855-42fd-a2b9-3713e2356c04\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"deposit\",\n            \"transaction_id\": \"fd23253a-cfbd-4e36-b40d-d55158d3a971\",\n            \"transaction_reference\": \"ws_CO_09052024125331596791798403\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 100,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"commission\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 10,\n            \"created_at\": \"2024-05-09T09:53:34.369Z\",\n            \"updated_at\": \"2024-05-09T09:54:15.461Z\"\n        },\n        {\n            \"id\": \"540dcdb4-7e0a-4cda-92dd-067acc80e1bb\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"94e4e238-40cb-4a59-a1c8-5ed6cdc72b33\",\n            \"transaction_reference\": \"AG_20240509_20102a64ca79ee894ba9\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T09:46:44.396Z\",\n            \"updated_at\": \"2024-05-09T09:46:45.138Z\"\n        },\n        {\n            \"id\": \"de557ca9-73b2-47a2-bb72-48c1231b6c75\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"80bfe7f8-ccf7-4772-9230-4fd9831cc481\",\n            \"transaction_reference\": \"AG_20240509_20303b0ac64f5334ad6f\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T09:41:24.781Z\",\n            \"updated_at\": \"2024-05-09T09:41:25.621Z\"\n        },\n        {\n            \"id\": \"f9cec7de-73b9-4322-ac8e-bb0f84a891f7\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"c062ad68-85cb-4bcc-ad8b-40b0f7ce25e6\",\n            \"transaction_reference\": \"AG_20240509_20500a5fd892a9abf4f1\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T09:41:22.230Z\",\n            \"updated_at\": \"2024-05-09T09:41:22.428Z\"\n        },\n        {\n            \"id\": \"42c0f97e-ee5c-4475-93ac-813f40586cda\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"48cdef31-0b82-465f-aa3a-577d67278d9d\",\n            \"transaction_reference\": \"AG_20240509_20706d3b160664d56e5a\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T09:40:22.431Z\",\n            \"updated_at\": \"2024-05-09T09:40:23.144Z\"\n        },\n        {\n            \"id\": \"20ad6c59-f6d2-4a8c-acf7-eb6a423025cc\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"d608d347-c0d2-48ac-93d4-602f58b70c13\",\n            \"transaction_reference\": \"AG_20240509_20407f1747e4aad60183\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T09:38:52.822Z\",\n            \"updated_at\": \"2024-05-09T09:38:53.620Z\"\n        },\n        {\n            \"id\": \"8e171ba7-22f2-45a4-97ca-cebd8b07c4d7\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"61c47865-710c-489b-a7b8-c4201a30637c\",\n            \"transaction_reference\": \"AG_20240509_20206b8913a0760a8a5b\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 400,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 40,\n            \"created_at\": \"2024-05-09T09:36:40.318Z\",\n            \"updated_at\": \"2024-05-09T09:36:41.262Z\"\n        },\n        {\n            \"id\": \"0f069961-550d-4508-8e22-eea836f7d3a4\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"withdrawal\",\n            \"transaction_id\": \"43aceff4-7a56-4c36-8fe6-490fffe512fd\",\n            \"transaction_reference\": \"AG_20240509_20405bf6535f28158ad8\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 120,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 12,\n            \"created_at\": \"2024-05-09T09:15:55.646Z\",\n            \"updated_at\": \"2024-05-09T09:15:56.559Z\"\n        },\n        {\n            \"id\": \"39e7278b-be05-4f47-845b-506b5af72641\",\n            \"transaction_kind\": \"bitcoin\",\n            \"transaction_type\": \"buy\",\n            \"transaction_id\": \"3e1b74cf-1a6b-440f-b965-ef3a141677a0\",\n            \"transaction_reference\": \"5743fbb7-e58a-4f0c-b82d-1ea1282a6508\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 0.000024318904494960392,\n            \"source_address\": \"tb1qaedzpvln47x5z52z9d6utc75ulmuzxe9aq8zh7\",\n            \"destination_address\": \"tb1qsatkj4aztad5r527tpkkxkns0jded6zm9jhxp5\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 0.000037500000000000003,\n            \"created_at\": \"2024-05-09T07:44:23.478Z\",\n            \"updated_at\": \"2024-05-09T07:44:23.478Z\"\n        },\n        {\n            \"id\": \"84a24efb-7338-4b88-933f-ebbea28fb3fb\",\n            \"transaction_kind\": \"ethereum\",\n            \"transaction_type\": \"buy\",\n            \"transaction_id\": \"a82496e0-191a-4832-a942-4117a1516147\",\n            \"transaction_reference\": \"c6030411-f8bb-4aeb-86fe-07afd1815a75\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 0.0001755664945557666,\n            \"source_address\": \"0xf5D8bdB7C15a38e17F4A7f06B601d3458C295162\",\n            \"destination_address\": \"0xa1057a37235c0C4eE78a2073a34F5E149fAE71E7\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 0.000013125,\n            \"created_at\": \"2024-05-08T13:52:43.609Z\",\n            \"updated_at\": \"2024-05-08T13:52:43.609Z\"\n        },\n        {\n            \"id\": \"32365c11-ba1f-4b08-a7f3-e00d402bf56c\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"deposit\",\n            \"transaction_id\": \"bd3d580d-39dc-4239-b786-a975d0f85ef6\",\n            \"transaction_reference\": \"ws_CO_08052024154108072720006056\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 100,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"commission\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 10,\n            \"created_at\": \"2024-05-08T12:41:10.832Z\",\n            \"updated_at\": \"2024-05-08T12:41:52.098Z\"\n        },\n        {\n            \"id\": \"4a2596fa-6a44-489d-b20a-36ffc615e750\",\n            \"transaction_kind\": \"bitcoin\",\n            \"transaction_type\": \"buy\",\n            \"transaction_id\": \"7b51c32b-04d1-4e95-a2dd-aea65a30c3ab\",\n            \"transaction_reference\": \"ed4c60fa-90d1-4011-ae80-596a40322e52\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 0.000004744132338520409,\n            \"source_address\": \"tb1qaedzpvln47x5z52z9d6utc75ulmuzxe9aq8zh7\",\n            \"destination_address\": \"tb1qy04m78kwqzh4zztteagkc8nkzyyvp8ppnpcutr\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 0.0000075,\n            \"created_at\": \"2024-05-07T07:23:38.320Z\",\n            \"updated_at\": \"2024-05-07T07:23:38.320Z\"\n        },\n        {\n            \"id\": \"487b3462-456b-48e4-9e93-f961d6939f0e\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"deposit\",\n            \"transaction_id\": \"2e2fb589-122f-4c9e-a179-ca71bf060198\",\n            \"transaction_reference\": \"ws_CO_07052024101743128720637771\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 50,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"commission\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 5,\n            \"created_at\": \"2024-05-07T07:17:45.964Z\",\n            \"updated_at\": \"2024-05-07T07:18:27.190Z\"\n        },\n        {\n            \"id\": \"ae5a5026-6206-47c0-a9ca-28eca5d71a8f\",\n            \"transaction_kind\": \"bitcoin\",\n            \"transaction_type\": \"buy\",\n            \"transaction_id\": \"e45c4722-e67c-4fdc-a5b5-8233fb6c166b\",\n            \"transaction_reference\": \"8eb865a4-9638-48bb-8794-e98bc4a350b3\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 0.00035042602459897247,\n            \"source_address\": \"tb1qaedzpvln47x5z52z9d6utc75ulmuzxe9aq8zh7\",\n            \"destination_address\": \"tb1q3f2ncpsstj8tsvrc3xd35e8wzln6lyzme2rf0f\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 0.0005625000000000001,\n            \"created_at\": \"2024-05-06T12:19:47.228Z\",\n            \"updated_at\": \"2024-05-06T12:19:47.228Z\"\n        },\n        {\n            \"id\": \"61944c3a-8ebd-4687-865e-f2fe1774b677\",\n            \"transaction_kind\": \"ethereum\",\n            \"transaction_type\": \"sell\",\n            \"transaction_id\": \"26a66ae2-034b-40bd-a299-087566ab66db\",\n            \"transaction_reference\": \"38daeee5-fe7e-4399-9354-529ab3d89cba\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 0.01,\n            \"source_address\": \"0xf5D8bdB7C15a38e17F4A7f06B601d3458C295162\",\n            \"destination_address\": \"0xD6739a3Bb0AC65C5a1c14B958F49B2BD79860Bc4\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 2.5000000000000004e-7,\n            \"created_at\": \"2024-05-06T12:18:13.896Z\",\n            \"updated_at\": \"2024-05-06T12:18:13.896Z\"\n        },\n        {\n            \"id\": \"5dff34c8-1859-4371-9c59-6fc53fbee2b0\",\n            \"transaction_kind\": \"bitcoin\",\n            \"transaction_type\": \"buy\",\n            \"transaction_id\": \"f2aed7e4-21f8-4374-9000-cacf1ecea0fa\",\n            \"transaction_reference\": \"430173f3-9179-41d0-99c0-f604328a333f\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 5.810279950133853e-7,\n            \"source_address\": \"tb1qaedzpvln47x5z52z9d6utc75ulmuzxe9aq8zh7\",\n            \"destination_address\": \"tb1q5kr0wllvz3egxlh6c48tcjar9sl5vmt70qw7g6\",\n            \"transaction_charge_type\": \"fee\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 9.375e-7,\n            \"created_at\": \"2024-05-06T09:32:22.173Z\",\n            \"updated_at\": \"2024-05-06T09:32:22.173Z\"\n        },\n        {\n            \"id\": \"040ecd1d-0d05-49f7-9318-7dd0ad1e9b7b\",\n            \"transaction_kind\": \"mpesa\",\n            \"transaction_type\": \"deposit\",\n            \"transaction_id\": \"64d8eb85-f229-42ea-8a8c-fdad766bfcee\",\n            \"transaction_reference\": \"ws_CO_06052024123031795746764503\",\n            \"transaction_status\": \"complete\",\n            \"pay_coin_amount\": 10,\n            \"source_address\": null,\n            \"destination_address\": null,\n            \"transaction_charge_type\": \"commission\",\n            \"notes\": null,\n            \"transaction_charge_amount\": 1,\n            \"created_at\": \"2024-05-06T09:30:34.592Z\",\n            \"updated_at\": \"2024-05-06T09:31:15.841Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get transaction by reference",
+					"id": "fe1d0cf8-68e8-4810-8d8c-83d6fe2ca89e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/transactions/reference/cc1c0c02-6c33-44a2-b7a1-7b1951f5dee9",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"transactions",
+								"reference",
+								"cc1c0c02-6c33-44a2-b7a1-7b1951f5dee9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdrawal",
+					"id": "17aff9bb-7f3a-4b5a-bbc6-2038c5332706",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\": \"254791798403\",\n    \"amount\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/withdrawal",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"withdrawal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Mpesa Transaction Status",
+					"id": "cedaf469-90fd-4599-bc7f-ae0a1555ac42",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transactions by user Id",
+					"id": "17e93d1d-c725-4fcf-b967-1e3c6a9ef265",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/transactions/user/bf0d1221-f07f-447b-914f-04a895743d5d",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"transactions",
+								"user",
+								"bf0d1221-f07f-447b-914f-04a895743d5d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current user transactions",
+					"id": "76815ae4-b318-47ae-b92f-f0b056664e9b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/transactions/users/current",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"transactions",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction by Id",
+					"id": "7e9550db-6607-4d59-9596-3b34b229f08c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/transactions/c71b0aef-0a2c-4dba-b4a1-2dee08df64cc",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"transactions",
+								"c71b0aef-0a2c-4dba-b4a1-2dee08df64cc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Revenue",
+					"id": "16cad705-ea0f-4e66-92bd-4aa4da656f43",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/payments/revenue",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"payments",
+								"revenue"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "2736f9fb-3334-44be-87f2-a594b153bbb7"
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Get Owner Wallets",
+					"id": "ce56c234-7152-440b-b67b-83c21a8b711b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/wallets/owner",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"owner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate User Wallets",
+					"id": "b182fd7a-fec3-41d8-90ef-1a3f6d6b1eaf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVjODQ5ZTQ1LWMyMTgtNGJlMS05YzEyLTJhNGJjN2E5NGQzYyIsImVtYWlsIjoib3VkYXd5MTA1QGdtYWlsLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MTgwOTExNjcsImV4cCI6MTcxODA5NDc2N30.nfYzNcZSau_8VeZCw3QCnkipW2pIc9e1842zfbuiFuU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"ec849e45-c218-4be1-9c12-2a4bc7a94d3c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/wallets/generate-wallets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"generate-wallets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User Wallets",
+					"id": "40a33e5a-6448-4279-aa4b-4e0c1ba25118",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/wallets/user-wallets/bf0d1221-f07f-447b-914f-04a895743d5d",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"user-wallets",
+								"bf0d1221-f07f-447b-914f-04a895743d5d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withrawal Request",
+					"id": "410e5e37-b1c4-4d0c-9e02-b9344f6a0d57",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 0.0000001,\n    \"receiverAddress\": \"0xc79242B5fc577fBB21874Cf33b020DA149923D11\",\n    \"symbol\": \"eth\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/wallets/withdrawal",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"withdrawal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposit",
+					"id": "f7f1d568-b46c-4ef2-b346-8d4c80f9ea0b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/wallets/webhook/deposit",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"webhook",
+								"deposit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Wallet token",
+					"id": "a007b4ef-e032-45c5-8ed0-1e6ead307d70",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbklkeCI6MjAzMTc4LCJ0b2tlblR5cGUiOiJDT01QQU5ZIiwidG9rZW5FeHBpcmVkRGF0ZSI6IjIwMjQtMDgtMjVUMTM6MTU6MjAuNjM4WiJ9.j5SoV7o2MBFZTNnnfI23mI_Ka3qOpdq0dcR4IKtPeYM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/wallets/register-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"register-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update wallet token",
+					"id": "675da0ab-5aa1-4e27-8c8d-be15cb623164",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldToken\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/wallets/update-token",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"update-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Wallet Access Token",
+					"id": "efa05a89-afae-4a3e-bac8-4c4f874b7e2f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Webhook",
+					"id": "3830c510-b623-4a31-95c4-a61bb62c0790",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVjODQ5ZTQ1LWMyMTgtNGJlMS05YzEyLTJhNGJjN2E5NGQzYyIsImVtYWlsIjoib3VkYXd5MTA1QGdtYWlsLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MTgwOTExNjcsImV4cCI6MTcxODA5NDc2N30.nfYzNcZSau_8VeZCw3QCnkipW2pIc9e1842zfbuiFuU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletId\": 190,\n    \"name\": \"BTCDEPOSIT\",\n    \"callbackUrl\": \"https://api.gochapaa.io/api/v1/wallets/webhook/callback\",\n    \"type\": \"DEPOSIT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/wallets/webhook/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"webhook",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Webhooks",
+					"id": "1f284163-ff11-4561-92d2-a847ccf45963",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/wallets/webhook/byWallet/1249",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"webhook",
+								"byWallet",
+								"1249"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gather Assets",
+					"id": "a61a83c2-cdb6-46b2-9cf9-691c390d7b35",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletId\": 1249,\n    \"symbol\": \"ETH\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/wallets/gather-assets",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"gather-assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request deposit",
+					"id": "b6722b6d-216d-47ca-b0b0-5f31c4df2b3d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 0.002,\n    \"senderAddress\":\"0x25d7F11935dE2DC518E799AAA2cf1EF9c4D4874d\",\n    \"symbol\": \"eth\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/wallets/deposit",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"deposit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer",
+					"id": "3e92d44a-65e9-4150-9917-4be0340ad077",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 0.002,\n    \"receiverEmail\": \"edward@gochapaa.com\",\n    \"symbol\": \"eth\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}}/api/v1/wallets/transfer",
+							"host": [
+								"{{Url}}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"transfer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Webhook",
+					"id": "e75f5b40-570c-4ba6-ba77-de965f56a093",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"walletId\":\"\",\n    \"webhookId\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/wallets/webhook/delete",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"webhook",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buy Crypto",
+					"id": "87ff3929-9c44-4cb8-a521-99e9ddf55338",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"btc\",\n    \"amount\": \"0.001\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/wallets/buy-crypto",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"buy-crypto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve crypto buy request",
+					"id": "1cc904f3-50f2-4a27-a125-db34a1e1e53f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/wallets/approve-crypto-buy/:id",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"approve-crypto-buy",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sell Crypto",
+					"id": "42afc6e6-1988-4d65-ad7f-f19df5a35db6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"symbol\": \"usdt\",\n    \"amount\": \"50.00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/wallets/sell-crypto",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"wallets",
+								"sell-crypto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Approve Crypto Withdrawal",
+					"id": "17d91bf0-ddb3-4650-826f-da6182d4f39c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "a86bb1fc-a5d9-435d-98b8-8ebbb08baf6a"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All User KYC Documents",
+					"id": "9310e3c0-025d-4f2b-92f5-5c3474f42faf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/allUsers",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"allUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by Wallet Address",
+					"id": "6ba48b4b-5965-47cd-9449-c5eafe31d1b4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"address\": \"tb1qvnjjhd4ulvfj9445n0xdus4qn5js7yayy72u9t\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users/get-user-by-wallet/tb1qvnjjhd4ulvfj9445n0xdus4qn5js7yayy72u9t",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"get-user-by-wallet",
+								"tb1qvnjjhd4ulvfj9445n0xdus4qn5js7yayy72u9t"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user wallet by email",
+					"id": "3f82f25f-9074-4828-adb4-f2fdcd37204d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVmMDQ2OWJjLTgwZWItNGMzNy1hZGI3LWI1MDlhM2M0ZmNlZCIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzEzNzc4ODA1LCJleHAiOjE3MTM3ODI0MDV9.TanZJ4TUP5KSJn2wX3Mb4kDFglZHILKhskxuaIJMwts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"ouda.wycliffe@gmail.com\",\n    \"symbol\": \"eth\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/users/get-wallet-by-email",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"get-wallet-by-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve user KYC",
+					"id": "bfe5f12b-d491-4ff8-be00-7d00aa63a0fc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"38569fc8-39e0-46a8-9fd5-77e5ecb24119\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/users/approve-kyc",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"approve-kyc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"id": "ba920c08-32d9-4a9c-b40d-984c3bf038aa",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRmODExNjNhLWFkOTktNGM5Mi1iMDdhLTBhMzQ2NGUzM2MzNSIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzE2OTAyNDk5LCJleHAiOjE3MTY5MDYwOTl9.HqWiQ2hR02cZiFTdsOaE59D1aJUwWzGK8ldhjAEuFok",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/users/4f81163a-ad99-4c92-b07a-0a3464e33c35",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"4f81163a-ad99-4c92-b07a-0a3464e33c35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject User KYC",
+					"id": "6a8d6159-b759-42fa-a256-73629f3475ed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJmMGQxMjIxLWYwN2YtNDQ3Yi05MTRmLTA0YTg5NTc0M2Q1ZCIsImVtYWlsIjoiaXJlbmVAZ29jaGFwYWEuY29tIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTcxNTc1Mjc2MywiZXhwIjoxNzE1NzU2MzYzfQ.qFmauEI2LtCwHGvD4FNbGey-VKStLSlIy_Rahb-kIVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/users/reject-kyc",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"reject-kyc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"id": "ab1b69c2-8019-45c9-bd72-8d7b19880606",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}api/v1/users/129a881a-532a-44b3-962e-2737c526c31d",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"users",
+								"129a881a-532a-44b3-962e-2737c526c31d"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "13cab8cc-112a-47a5-afaf-736d73ca4350"
+		},
+		{
+			"name": "Coins",
+			"item": [
+				{
+					"name": "Create coin",
+					"id": "b4dac5f6-73b8-41a6-a785-be9483457ab1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n            \"id\": \"a32a3494-7e1a-4b66-94be-0ea779efb02f\",\n            \"coin_id\": \"USDT\",\n            \"coin_name\": \"Tether USDT\",\n            \"coin_label\": \"USDT\",\n            \"price\": 1,\n            \"description\": \"Tether Description\",\n            \"icon_style\": \"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png\",\n            \"standard_price\": \"1\",\n            \"minimum_decimal_point\": 2,\n            \"maximum_decimal_point\": 2,\n            \"withdrawal_commission\": 1,\n            \"oneOffWithdrawalLimit\": 10000,\n            \"dailyWithdrawalLimit\": 10000,\n            \"transactionFee\": 0.1,\n            \"admin_approval_amount\": 10000,\n            \"minimum_withdrawal_amount\": 1,\n            \"minimum_transfer_amount\": 3,\n            \"transfer_fee\": 0,\n            \"is_active\": true\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/coinList/create",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Coins list",
+					"id": "651c267b-2b8a-4ffe-92b2-e67db0a3a0e4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/coinList/all",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Coin by Id",
+					"id": "d45a27c0-9843-4c1f-be27-97c62075ebec",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/coinList/coin/81c78c74-3f13-468e-9699-a84981700163",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"coin",
+								"81c78c74-3f13-468e-9699-a84981700163"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update coin by id",
+					"id": "482a020e-6a79-493f-9199-f8355e1853e2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"a32a3494-7e1a-4b66-94be-0ea779efb02f\",\n    \"coinId\": \"USDT\",\n    \"coinName\": \"Tether USDT\",\n    \"coinLabel\": \"USDT\",\n    \"price\": 1,\n    \"description\": \"Tether Description\",\n    \"iconStyle\": \"https://s2.coinmarketcap.com/static/img/coins/64x64/825.png\",\n    \"standard_price\": \"1\",\n    \"minimumDecimalPoint\": 2,\n    \"maximumDecimalPoint\": 2,\n    \"withdrawalCommission\": 1,\n    \"oneOffWithdrawalLimit\": 10000,\n    \"dailyWithdrawalLimit\": 10000,\n    \"transactionFee\": 0.1,\n    \"adminApprovalAmount\": 10000,\n    \"minimumWithdrawalAmount\": 1,\n    \"minimumTransferAmount\": 10,\n    \"transferFee\": 0,\n    \"isActive\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/coinList/update/a32a3494-7e1a-4b66-94be-0ea779efb02f",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"update",
+								"a32a3494-7e1a-4b66-94be-0ea779efb02f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete coin",
+					"id": "2a6131d1-6603-4c76-b227-c6f82bf4c6ce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/coinList/delete/:id",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate/Deactivate Coin",
+					"id": "6171cdf5-e72a-419b-8200-0f3d22f94803",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGMyNGZhLWY1NTYtNDU2NC1iNDQ5LWIzOTJkYjE4N2Y5MiIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzI0MTQwNzQyLCJleHAiOjE3MjQxNDQzNDJ9.p118iyCrLuu0ZaQDjD38fVWcHjXyjRGGaeggiuInUKs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isActive\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/coinList/coin/a32a3494-7e1a-4b66-94be-0ea779efb02f/activate-deactivate",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"coin",
+								"a32a3494-7e1a-4b66-94be-0ea779efb02f",
+								"activate-deactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Active Coins",
+					"id": "9e192071-be76-45ac-b056-5db8a8d454f3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/coinList/get-active-coins",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"coinList",
+								"get-active-coins"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "8d9fe808-deee-4cdf-b06c-149d3e057d2f"
+		},
+		{
+			"name": "Paprika",
+			"item": [
+				{
+					"name": "Root",
+					"id": "b36e57c7-2980-45bd-b473-f855913c28ae",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "315ae03b-1b19-4a9c-bdd6-bec89e0e565e"
+		},
+		{
+			"name": "FAQS",
+			"item": [
+				{
+					"name": "Get All FAQS",
+					"id": "c197cbbf-e846-44af-9e70-c0a70b3ad18a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/faqs/all",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"faqs",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get FAQs By Id",
+					"id": "2daf84b4-47ce-439a-a9a1-b0f41a7f3736",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/faqs/byId/:id",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"faqs",
+								"byId",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create FAQ",
+					"id": "6849a626-6dd4-4e53-95c2-8e18b609e3b9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNlMWNkN2ZiLTA2NzMtNDBiOS1iYzI0LTY3M2JiMWEzZDc4OCIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzE2NDUxMzMxLCJleHAiOjE3MTY0NTQ5MzF9.AKaKIWq4ngO8NF6feKOD5VS-biefA3PgIr5IAnPU6SI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\":\"Test Question\",\n    \"answer\": \"Test FAQ response in details.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/faqs/create",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"faqs",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update FAQ",
+					"id": "72a9d70c-a88c-4f66-a74d-0da5032a8ea7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNlMWNkN2ZiLTA2NzMtNDBiOS1iYzI0LTY3M2JiMWEzZDc4OCIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzE2NDUxMzMxLCJleHAiOjE3MTY0NTQ5MzF9.AKaKIWq4ngO8NF6feKOD5VS-biefA3PgIr5IAnPU6SI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n    \"question\": \"Test Question updated\",\n    \"answer\": \"Test FAQ response in details.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/faqs/update/40fd9cb8-cf5c-4f27-ac06-2d46c4b95567",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"faqs",
+								"update",
+								"40fd9cb8-cf5c-4f27-ac06-2d46c4b95567"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete FAQ",
+					"id": "b9825889-bbfe-4832-becb-1c1b62ebbfa4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/faqs/delete/:id",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"faqs",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "fca48fbf-a458-41bd-94ad-aae2dd458919"
+		},
+		{
+			"name": "Owner Wallets",
+			"item": [
+				{
+					"name": "Get All",
+					"id": "b15023de-27c7-4eb4-818b-0c9fe3b69115",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}/api/v1/owner-wallets/all",
+							"host": [
+								"{{url}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner-wallets",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"id": "ef91fb98-9730-4f86-ad68-8fa48c9c20d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"coinId\": \"ETH\",\n        \"address\": \"0xf5D8bdB7C15a38e17F4A7f06B601d3458C295162\",\n        \"passphrase\": \"chapaaMainnet!32\",\n        \"privateKey\": \"RRwHWFoy6gXeDrdkW/9OT9zBQYipvIYe8/bXVKCt3a+IJD/9uOTHPVepvUwqkLA5F5pDG57Npd1i6cAt7XGWIZFebkfiovigT7YqKfi4vV8qzUYcwEDR/OXsvzLXyPx7I7CPwtGXQPcW7xgMYHGYeuBZ/nFbIfOoCr9/vP1Co330BPENE+iVVqGbBJODFoNzV0oTEUhyHRPL+Lll7K3bxJM7UzYUjMjEZGeEhSOGltqr8cMUBaBX3KcsOMofCA6tsqind0z65izhPuW2YLgM9/9WMB1f89h4dh49IPTw0S3lPvTfrmULY6zYRiWzjucjOKQPABZwjnigy7KFa5wAv4/vWgLNBL1V0M9SBfMbZDxsXhgh1oiNsWq0o2w6rij4iSoo1xDFIz7dNk51alo9Yeco2kjF5bQ56ZHmgFPcCT+rPho19CZopI8rzD+EItG4HwQuVfsvRyL99WxQaAXE39C07MeWDo9KekTq22qBqj9NLgXjd59PslLUIxHuCXbq\",\n        \"createdAt\": \"2024-03-19T07:41:10.256Z\",\n        \"updatedAt\": \"2024-03-19T07:41:10.256Z\",\n        \"deletedAt\": null\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/owner-wallets/update/f6231399-9d75-45de-8c03-13ea2acdbbba",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner-wallets",
+								"update",
+								"f6231399-9d75-45de-8c03-13ea2acdbbba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"id": "b09d99fe-f3c6-459f-8cc8-2872880ad82e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url-dev}}/api/v1/owner-wallets/delete/f6231399-9d75-45de-8c03-13ea2acdbbba",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner-wallets",
+								"delete",
+								"f6231399-9d75-45de-8c03-13ea2acdbbba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"id": "6cadf380-5ec8-450e-bfc5-9232eca456de",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"coinId\": \"ETH\",\n        \"address\": \"0xf5D8bdB7C15a38e17F4A7f06B601d3458C295162\",\n        \"passphrase\": \"chapaaMainnet!32\",\n        \"privateKey\": \"RRwHWFoy6gXeDrdkW/9OT9zBQYipvIYe8/bXVKCt3a+IJD/9uOTHPVepvUwqkLA5F5pDG57Npd1i6cAt7XGWIZFebkfiovigT7YqKfi4vV8qzUYcwEDR/OXsvzLXyPx7I7CPwtGXQPcW7xgMYHGYeuBZ/nFbIfOoCr9/vP1Co330BPENE+iVVqGbBJODFoNzV0oTEUhyHRPL+Lll7K3bxJM7UzYUjMjEZGeEhSOGltqr8cMUBaBX3KcsOMofCA6tsqind0z65izhPuW2YLgM9/9WMB1f89h4dh49IPTw0S3lPvTfrmULY6zYRiWzjucjOKQPABZwjnigy7KFa5wAv4/vWgLNBL1V0M9SBfMbZDxsXhgh1oiNsWq0o2w6rij4iSoo1xDFIz7dNk51alo9Yeco2kjF5bQ56ZHmgFPcCT+rPho19CZopI8rzD+EItG4HwQuVfsvRyL99WxQaAXE39C07MeWDo9KekTq22qBqj9NLgXjd59PslLUIxHuCXbq\",\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url-dev}}/api/v1/owner-wallets/create",
+							"host": [
+								"{{url-dev}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"owner-wallets",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "e8727d56-4434-4852-a8a2-03992ecd66eb"
+		},
+		{
+			"name": "General",
+			"item": [
+				{
+					"name": "Request OTP",
+					"id": "40b379db-ed89-4be0-b329-0fbc44fd57c9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/general/get-otp",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"general",
+								"get-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify OTP",
+					"id": "c2d9cc6b-c982-44bb-a414-0ee65c60a1bc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"otp\": \"797364\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/general/verify-otp",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"general",
+								"verify-otp"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "126ade4b-b8cd-4cb1-b97a-8bdcb7bcc29f"
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Get All User Requests",
+					"id": "d27e3731-0fd2-45b5-8c9f-8482bef4b18b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/notification/all",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notification",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All User Unread Notifications",
+					"id": "54fec54a-6556-4c17-aff6-2e28b10a6a14",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/notification/unread-count",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notification",
+								"unread-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Notification",
+					"id": "0926f816-f209-46d1-8d6e-c162fc4666dc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/notification/read/595978bd-101e-4c74-b862-016d39eaa8f2",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"notification",
+								"read",
+								"595978bd-101e-4c74-b862-016d39eaa8f2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "7aebbd23-19ca-4bea-bfd8-8bee0f857497"
+		},
+		{
+			"name": "Withdrawal Requests",
+			"item": [
+				{
+					"name": "Create Withdrawal Request",
+					"id": "625010f4-aba1-49cc-bb7d-163da413b426",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA1YzQxMjk0LWUwY2QtNDA2Mi1hM2NkLWRmMGI0YTMyMDVhYSIsImVtYWlsIjoicmV1YmVuQGdvY2hhcGFhLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MTc2NTc0MTgsImV4cCI6MTcxNzY2MTAxOH0.E_dKEdC2eQqlgfI5biqJbfxwno6vlS7NRAqp8dZ2ftg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"symbol\":\"kes\", /// can be btc or eth\r\n    \"amount\": \"2\",\r\n    \"to\": \"254720637771\" //where the withdrawal amount is to be sent, can be phone number or wallet address\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-test-env.gochapaa.io/api/v1/withdrawal-request/create",
+							"protocol": "https",
+							"host": [
+								"api-test-env",
+								"gochapaa",
+								"io"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Withdrawal Requests",
+					"id": "2ae242a5-449f-4adf-b9ee-519053d3b08e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/withdrawal-request/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Withdrawal Requests by userID",
+					"id": "0ae99eb4-b1ca-4c32-a969-9acf89c7f300",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/withdrawal-request/55dbd3c2-72fa-4b9b-baee-bf3f215cb432",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"55dbd3c2-72fa-4b9b-baee-bf3f215cb432"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Withdrawal Request by Status",
+					"id": "acd5043c-a108-4677-8ab6-966678aa8d8b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "/// The status can be: approved, pending, rejected",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/withdrawal-request/by_status/pending",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"by_status",
+								"pending"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Withdrawal Request",
+					"id": "f10f089a-1e76-4347-8de3-a1ac1f55d776",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\": \"0706119340\",\r\n    \"amount\":\"2000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/withdrawal-request/update/55dbd3c2-72fa-4b9b-baee-bf3f215cb432",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"update",
+								"55dbd3c2-72fa-4b9b-baee-bf3f215cb432"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Withdrawal Request",
+					"id": "67e3c104-3ccf-4f64-815d-b8469db85bf9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJmMGQxMjIxLWYwN2YtNDQ3Yi05MTRmLTA0YTg5NTc0M2Q1ZCIsImVtYWlsIjoiaXJlbmVAZ29jaGFwYWEuY29tIiwicm9sZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTcxNTc1Mjc2MywiZXhwIjoxNzE1NzU2MzYzfQ.qFmauEI2LtCwHGvD4FNbGey-VKStLSlIy_Rahb-kIVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/withdrawal-request/delete/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"delete",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Approve Withdrawal Request",
+					"id": "b6ed5394-02f4-41fd-892e-3d303574536c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/withdrawal-request/approve/455e1369-742d-4eea-943f-169a52d0b008",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"approve",
+								"455e1369-742d-4eea-943f-169a52d0b008"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Withdrawal Request",
+					"id": "deac0e0d-113f-48bd-be4b-7fc414112941",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/withdrawal-request/reject/c062bc05-b7ef-4e2a-8d7f-f3d4db09c9fd",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"withdrawal-request",
+								"reject",
+								"c062bc05-b7ef-4e2a-8d7f-f3d4db09c9fd"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "780b27d0-79cb-49d8-bfa8-df7a32e702a4"
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Get total number of users",
+					"id": "1198b5eb-3f7c-40c7-adb1-01ac8323d467",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboard/total-users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"total-users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total number of coins",
+					"id": "6209f4d6-1bd0-4ddf-a37c-1fc409b84707",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboard/total-coins",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"total-coins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Transactions",
+					"id": "2b6c0ff0-7d85-4399-a6be-d565efc093c0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboard/total-complete-transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"total-complete-transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total Revenue Amount",
+					"id": "c9774898-fb72-4067-a441-3ecd2e5518d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboard/total-revenue-amount",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"total-revenue-amount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Transactions by coin",
+					"id": "8170c147-1134-4e8a-983e-33a9403e3e05",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboard/complete-transaction-by-coin-id/:coinId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"complete-transaction-by-coin-id",
+								":coinId"
+							],
+							"variable": [
+								{
+									"key": "coinId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Wallet balance",
+					"id": "47f9abd3-8a9d-4472-8457-f36832ad63a3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/dashboard/wallet-balance/81c78c74-3f13-468e-9699-a84981700163",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"wallet-balance",
+								"81c78c74-3f13-468e-9699-a84981700163"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transaction Graph",
+					"id": "f0c76dc6-fa3c-4897-a021-133a0dde4c8c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/dashboard/transaction-graph",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"transaction-graph"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sum of completed transactions",
+					"id": "ea60cd33-bb6b-4af7-9bd7-958932d501fe",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZiYTY2ZDVjLTM5MzItNDIzNC04NDM4LTEzMzBjNTk0MjBmYyIsImVtYWlsIjoicmV1YmVuQGdvY2hhcGFhLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpYXQiOjE3MjgyODQ3NjgsImV4cCI6MTcyODI4ODM2OH0.YKgZ3GgG3pqPxJj3EL0ACkus3glUhXsck1Www-SpK5k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/dashboard/sum-of-completed-transactions",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"sum-of-completed-transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Group Yearly transactions",
+					"id": "2fc954b2-30a0-440e-9161-e56756cb46c4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/dashboard/group-yearly-transactions",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"dashboard",
+								"group-yearly-transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "c9be4f0c-d66e-437b-97ba-cfd1028d871e"
+		},
+		{
+			"name": "Favorite Address",
+			"item": [
+				{
+					"name": "Save new favourite address",
+					"id": "046dc7d9-27fa-457b-b9ec-e987a64a776a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"bf0d1221-f07f-447b-914f-04a895743d5d\",\n    \"address\": \"tb1q0cnruttt6sajhqkzd5f2pld4cpkmqjzu7p8kuj\",\n    \"type\": \"deposit\",\n    \"name\": \"ryn\",\n    \"coinId\": \"BTC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Url}}/api/v1/favourite-address/create",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite-address",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All user favourite address",
+					"id": "97d0ca6a-785c-46b6-9ca2-9d4ada745154",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/favourite-address/mine",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite-address",
+								"mine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user favourite addresses by coin filter by",
+					"id": "ade4f887-4065-4f52-9ec2-337e96688779",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/favourite-address/filter/coin?coinId=BTC",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite-address",
+								"filter",
+								"coin"
+							],
+							"query": [
+								{
+									"key": "coinId",
+									"value": "BTC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by transaction type",
+					"id": "97502a37-5285-417c-b119-7c44630c9120",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/favourite-address?type=deposit",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite-address"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "deposit"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter by both type and coin",
+					"id": "428bd14b-16bc-48f9-955a-0607bb4e80a5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Url}}/api/v1/favourite-address/filter?coinId=BTC&type=deposit",
+							"host": [
+								"{{Url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"favourite-address",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "coinId",
+									"value": "BTC"
+								},
+								{
+									"key": "type",
+									"value": "deposit"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "c63a3463-9d33-4f11-9468-5cab026f4883"
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "660a597a-6256-4ed7-ba88-d456f842d3bf",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ad70f031-e695-4d86-8827-844c77901a42",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3f8fce47-7322-4e13-9688-6e267e725230",
+			"key": "url",
+			"value": "https://api.gochapaa.io",
+			"type": "string"
+		},
+		{
+			"id": "b6c5f94c-1097-4b9f-8f6f-78039dfafc0a",
+			"key": "url-dev",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"id": "7b175d11-e9a4-40a4-a52a-13f7a44928fe",
+			"key": "access_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGMyNGZhLWY1NTYtNDU2NC1iNDQ5LWIzOTJkYjE4N2Y5MiIsImVtYWlsIjoib3VkYS53eWNsaWZmZUBnbWFpbC5jb20iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNzI2NzIzMzU2LCJleHAiOjE3MjY3MjY5NTZ9.vRcgElKds2MJ454_YzLVhC_yYqEULpHRxu1wBFZuayM",
+			"type": "string"
+		},
+		{
+			"id": "d5656e3a-6765-42f5-a540-41c886c577bb",
+			"key": "test-url",
+			"value": "https://api-test-env.gochapaa.io",
+			"type": "string"
+		}
+	]
+}
